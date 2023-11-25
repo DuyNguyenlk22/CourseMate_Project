@@ -264,8 +264,9 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
             height={100}
           />
         </Form.Item>
-        <div className='flex justify-end'>
+        <div className='flex justify-center'>
           <Button
+            size='large'
             className='bg-green-500 hover:bg-green-600 duration-300 text-white'
             htmlType='submit'
           >

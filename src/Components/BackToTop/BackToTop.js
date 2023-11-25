@@ -12,7 +12,7 @@ export default function BackToTop() {
       }}
     >
       <FloatButton.BackTop
-        duration={1200}
+        duration={1000}
         shape='square'
         icon={<i className='fa-solid fa-angle-up text-white font-semibold'></i>}
       />

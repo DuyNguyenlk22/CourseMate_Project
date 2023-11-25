@@ -10,9 +10,7 @@ import {
 import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import FormEnrollment from "./FormEnrollment";
 import { useNavigate } from "react-router-dom";
-import UpdateUserModal from "./UpdateUserModal";
 import { setTaiKhoan } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
-// import AddUser from "../AddUser/AddUser";
 
 export default function TableUser() {
   const columns = [
@@ -86,7 +84,6 @@ export default function TableUser() {
   let dataSource = [];
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(true);
-  const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [searchResult, setSearchResult] = useState(null);
   const [isSearch, setIsSearch] = useState(false);
@@ -126,9 +123,6 @@ export default function TableUser() {
       }),
     );
   }
-  const handleAddUser = () => {
-    navigate("/addUser");
-  };
 
   const handleModalCancel = () => {
     setIsModalVisible(false);
@@ -139,7 +133,6 @@ export default function TableUser() {
     console.log("user:", user);
     setCurrentUser(user);
     setIsModalVisible(true);
-    setIsUpdateModalVisible(true);
     console.log(`Modal visibility state: ${isModalVisible}`);
   };
 
@@ -205,18 +198,9 @@ export default function TableUser() {
         </Button>
       </div>
 
-      <Button type='default' icon={<PlusOutlined />} onClick={handleAddUser}>
+      <Button type='default' icon={<PlusOutlined />}>
         Thêm người dùng
       </Button>
-      <UpdateUserModal
-        isVisible={isModalVisible}
-        onCancel={handleModalCancel}
-        user={currentUser}
-        onUpdate={(updatedUser) => {
-          dispatch(updateUser(updatedUser));
-          setIsModalVisible(false);
-        }}
-      />
 
       <Table bordered columns={columns} dataSource={dataSource} />
     </div>

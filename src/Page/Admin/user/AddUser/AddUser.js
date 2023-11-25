@@ -1,11 +1,10 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
 import { themNguoiDung } from "../../../../Services/api";
 
 const AddUser = () => {
   return (
     <div className='admin-center-container'>
-      <Formik
+      {/* <Formik
         initialValues={{
           taiKhoan: "",
           matKhau: "",
@@ -113,7 +112,7 @@ const AddUser = () => {
             </div>
           </Form>
         )}
-      </Formik>
+      </Formik> */}
     </div>
   );
 };
