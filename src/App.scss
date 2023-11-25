@@ -1,6 +1,3 @@
-@import "../src/Page/Login/SignUpPage/SignUpPage.scss";
-@import "../src/Page/Login/SignInPage/SignInPage.scss";
-@import "../src/Page/NotFoundPage/NotFoundPage.scss";
 @import "../src/Page/User/CourseDetailPage/CourseDetailPage.scss";
 
 // Base styles
@@ -50,9 +47,11 @@ html {
         color: white;
     }
 }
+
 .ant-input:hover {
     border: 1px solid #d9d9d9;
 }
+
 .ant-input:focus {
     border: 1px solid #d9d9d9;
 }

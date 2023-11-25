@@ -3,12 +3,10 @@ import { Form, Input, Modal, message } from 'antd';
 import { capNhatThongTinNguoiDung } from '../../../Services/api';
 import { userDetailLocalStorage } from '../../../Services/localServices';
 
-
 export default function PersonalInfo({ userDetail }) {
 
-  const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [form] = Form.useForm();
   const formItemLayout = {
     labelCol: {
       xs: {
@@ -170,7 +168,7 @@ export default function PersonalInfo({ userDetail }) {
           </Form.Item>
           <Form.Item name="maNhom"
             label="Group Code"
-            className='d-none'
+            className='hidden'
             rules={[
               {
                 required: true,
@@ -182,7 +180,7 @@ export default function PersonalInfo({ userDetail }) {
           </Form.Item>
           <Form.Item name="maLoaiNguoiDung"
             label="User Type"
-            className='d-none'
+            className='hidden'
             rules={[
               {
                 required: true,
