@@ -1,0 +1,64 @@
+@import "../src/Page/Login/SignUpPage/SignUpPage.scss";
+@import "../src/Page/Login/SignInPage/SignInPage.scss";
+@import "../src/Page/NotFoundPage/NotFoundPage.scss";
+@import "../src/Page/User/CourseDetailPage/CourseDetailPage.scss";
+
+// Base styles
+html {
+    font-family: "Open Sans", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+// Global button styles
+.btnGlobal {
+    padding: 8px 20px;
+    font-size: 15px;
+    background: #f24080;
+    color: white;
+    border-radius: 25px;
+    transition: all 0.5s;
+
+    &:hover {
+        background-color: #961040;
+    }
+}
+
+.ant-modal-footer {
+    display: none;
+}
+
+.btnGlobalOutline {
+    padding: 8px 20px;
+    font-size: 15px;
+    border: 1px solid #f24080;
+    background-color: white;
+    color: #f24080;
+    border-radius: 25px;
+    transition: all 0.5s;
+
+    &:hover {
+        background-color: #f24080;
+        border: 1px solid white;
+        color: white;
+    }
+}
+.ant-input:hover {
+    border: 1px solid #d9d9d9;
+}
+.ant-input:focus {
+    border: 1px solid #d9d9d9;
+}
+
+@media screen and (max-width: 996px) {
+    .container {
+        width: 95% !important;
+    }
+}
