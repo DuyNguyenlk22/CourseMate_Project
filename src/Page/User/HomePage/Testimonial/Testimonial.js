@@ -39,7 +39,7 @@ let renderTestimonailItem = () => {
 
 export default function Testimonial() {
   return (
-    <section className='testimonial py-12 lg:py-28'>
+    <section id='review' className='testimonial py-12 lg:py-28'>
       <div className='container'>
         <div className='testimonial__title w-[95%] md:w-[85%] lg:w-1/2 mx-auto'>
           <div className='text-center'>

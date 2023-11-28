@@ -54,7 +54,7 @@ let renderItem = () => {
 
 export default function ListEducator() {
   return (
-    <div className='listEducator pt-28'>
+    <section id='team' className='listEducator pt-28'>
       <div className='container'>
         <div className='overlay'></div>
         <h1 className='font-extrabold mb-10 text-[1.8rem] md:text-4xl leading-[1.1]'>
@@ -64,6 +64,6 @@ export default function ListEducator() {
           {renderItem()}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,0 +1,55 @@
+#contact__info {
+    position: relative;
+    z-index: 1;
+    .pattern_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    .zigzag-patten {
+        background-image: url("../../../../public/image/banner/educator-iconBanner1.png");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: 20% auto;
+        opacity: 0.5;
+    }
+    .contact_detail_list {
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px 50px 20px 30px;
+            background-color: #f8f8f8;
+            border-radius: 25px;
+            span {
+                color: #414141;
+                font-size: 15px;
+            }
+        }
+    }
+    .circle-patten {
+        background-image: url("../../../../public/image/banner/bannerLeft.png");
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+    }
+    .contact-from-wrap {
+        position: relative;
+        z-index: 2;
+        border-radius: 25px;
+        padding: 70px 50px;
+        box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.03);
+        background-color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+    #contact__info {
+        .contact-from-wrap {
+            padding: 10px 5px;
+        }
+    }
+}

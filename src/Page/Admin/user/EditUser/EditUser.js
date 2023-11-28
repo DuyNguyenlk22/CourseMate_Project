@@ -5,7 +5,6 @@ import { updateUser } from "../../../../Redux/listUserSlice/listUserSlice";
 
 export default function EditUser({ form, infoUser, setIsModalEditOpen }) {
   const dispatch = useDispatch();
-  console.log("😐 ~ EditUser ~ infoUser:", infoUser);
   useEffect(() => {
     form.setFieldsValue({
       taiKhoan: infoUser.taiKhoan,

@@ -1,5 +1,28 @@
 import React from "react";
 import "./UserFooter.scss";
+import { NavLink } from "react-router-dom";
+
+let icons = [
+  { name: "fa-brands fa-facebook" },
+  { name: "fa-brands fa-twitter" },
+  { name: "fa-brands fa-youtube" },
+  { name: "fa-brands fa-instagram" },
+];
+let listItem = {
+  listItemCol2: [
+    { title: "About us" },
+    { title: "Careers" },
+    { title: "News & Articles" },
+    { title: "Legal Notice" },
+  ],
+  listItemCol3: [
+    { title: "Help Center" },
+    { title: "Contact Us" },
+    { title: "Payment Center" },
+    { title: "Parent Community" },
+  ],
+};
+
 export default function UserFooter() {
   return (
     <div className='footer pt-20'>
@@ -12,52 +35,37 @@ export default function UserFooter() {
               perferendis? Laboris lacus quidem repellendus quasi.
             </p>
             <div className='space-x-6 flex'>
-              <div className='item_icon'>
-                <i className='fa-brands fa-facebook' />
-              </div>
-              <div className='item_icon'>
-                <i className='fa-brands fa-twitter' />
-              </div>
-              <div className='item_icon'>
-                <i className='fa-brands fa-youtube' />
-              </div>
-              <div className='item_icon'>
-                <i className='fa-brands fa-instagram' />
-              </div>
+              {icons.map((item, index) => {
+                return (
+                  <div className='item_icon cursor-pointer' key={index}>
+                    <i className={item.name} />
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className='col2'>
             <h3>Quick Links</h3>
             <ul>
-              <li>
-                <a href='#'>About us</a>
-              </li>
-              <li>
-                <a href='#'>Careers</a>
-              </li>
-              <li>
-                <a href='#'>News & Articles</a>
-              </li>
-              <li>
-                <a href='#'>Legal Notice</a>
-              </li>
+              {listItem.listItemCol2.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <NavLink>{item.title}</NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className='col3'>
             <h3>Support</h3>
             <ul>
-              <li>
-                <a href='#'>Help Center</a>
-              </li>
-              <li>
-                <a href='#'>Contact Us</a>
-              </li>
-              <li>
-                <a href='#'>Payment Center</a>
-              </li>
-              <li>
-                <a href='#'>Parent Community</a>
-              </li>
+              {listItem.listItemCol3.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <NavLink>{item.title}</NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className='col4 space-y-4'>
@@ -68,7 +76,9 @@ export default function UserFooter() {
             </div>
             <p>Aut, quae convallis minim cum ornare! Pede dictum convallis.</p>
             <div>
-              <button className='btnGlobal'>JOIN US NOW</button>
+              <button className='btnGlobal'>
+                <NavLink to={"/contact"}>JOIN US NOW</NavLink>
+              </button>
             </div>
           </div>
         </div>

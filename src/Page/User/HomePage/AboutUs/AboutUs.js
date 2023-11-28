@@ -1,10 +1,15 @@
 import { Progress } from "antd";
-import React from "react";
+import React, { Fragment } from "react";
 import "./AboutUs.scss";
 
+let data = [
+  { title: "Completed Projects", percent: "92%", number: 92 },
+  { title: "Financial Skills", percent: "98%", number: 98 },
+  { title: "Relaible & Hardworking", percent: "90%", number: 90 },
+];
 export default function AboutUs() {
   return (
-    <section id='ABOUT US' className='aboutUs pt-28'>
+    <section id='about_us' className='aboutUs pt-28'>
       <div className='container grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-28'>
         <div className='aboutUs__left'>
           <img
@@ -13,36 +18,22 @@ export default function AboutUs() {
             className='rounded-xl mb-9'
           />
           <div>
-            <div className='flex justify-between'>
-              <span>Completed Projects</span>
-              <span>92%</span>
-            </div>
-            <Progress
-              percent={92}
-              status='active'
-              strokeColor={"#41246D"}
-              size={"small"}
-            />
-            <div className='flex justify-between'>
-              <span>Financial Skills</span>
-              <span>98%</span>
-            </div>
-            <Progress
-              percent={98}
-              status='active'
-              strokeColor={"#41246D"}
-              size={"small"}
-            />
-            <div className='flex justify-between'>
-              <span>Relaible & Hardworking</span>
-              <span>90%</span>
-            </div>
-            <Progress
-              percent={90}
-              status='active'
-              strokeColor={"#41246D"}
-              size={"small"}
-            />
+            {data.map((item, index) => {
+              return (
+                <Fragment key={index}>
+                  <div className='flex justify-between'>
+                    <span>{item.title}</span>
+                    <span>{item.percent}</span>
+                  </div>
+                  <Progress
+                    percent={item.number}
+                    status='active'
+                    strokeColor={"#41246D"}
+                    size={"small"}
+                  />
+                </Fragment>
+              );
+            })}
           </div>
           <div className='regarding_us grid-cols-1 grid sm:grid-cols-2 gap-4 sm:gap-8 mt-[20px]'>
             <div className='regarding_left'>

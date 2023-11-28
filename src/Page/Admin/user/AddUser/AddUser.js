@@ -7,7 +7,6 @@ import { fetchList } from "../../../../Redux/listUserSlice/listUserSlice";
 const AddUser = ({ form, setIsModalAddOpen }) => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
-    console.log("Success:", values);
     let addUser = async () => {
       try {
         await themNguoiDung(values);
