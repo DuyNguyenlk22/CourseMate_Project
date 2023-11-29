@@ -17,7 +17,7 @@ export default function SignUpPage() {
         span: 6,
       },
       lg: {
-        span: 4,
+        span: 5,
       }
     },
     wrapperCol: {
@@ -56,7 +56,7 @@ export default function SignUpPage() {
     <div className='container border'>
       <div className='text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2'>
         <Form
-          className=' lg:p-20 p-5 border bg-purple-100 bg-opacity-60 rounded-2xl'
+          className=' lg:p-20 p-5 border bg-purple-300 bg-opacity-60 rounded-2xl'
           theme={'dark'}
           {...formItemLayout}
           form={form}
