@@ -133,7 +133,7 @@ export default function ListCourseByCategoriesPage() {
             className='underline text-[#f24080]'
             href='#categories'
           >
-            Here
+            HERE
           </a>
         </div>
       </div>

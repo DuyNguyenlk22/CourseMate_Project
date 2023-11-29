@@ -39,6 +39,23 @@ export default function Categories() {
       default:
     }
   };
+  let renderTitle = (index) => {
+    switch (index) {
+      case 0:
+        return "The logic behind the beauty";
+      case 1:
+        return "Where Ideas Take Shape";
+      case 2:
+        return "Pocket-sized Wonders";
+      case 3:
+        return "Crafting Digital Experiences";
+      case 4:
+        return "Building Digital Excellence";
+      case 5:
+        return "Unleash Your Potential";
+      default:
+    }
+  };
   let renderListCategories = () => {
     return categories?.map((item, index) => {
       return (
@@ -57,7 +74,7 @@ export default function Categories() {
             <div>
               <p className='text-xl font-bold duration-500'>{item.maDanhMuc}</p>
               <span className='text-zinc-400 duration-500'>
-                The logic behind the beauty
+                {renderTitle(index)}
               </span>
             </div>
           </div>
