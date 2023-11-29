@@ -1,28 +1,28 @@
-import { Button, ConfigProvider, Form, Input, Select, message } from "antd";
-import React from "react";
-import { themNguoiDung } from "../../../../Services/api";
+import { Button, ConfigProvider, Form, Input, Select } from "antd";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchList } from "../../../../Redux/listUserSlice/listUserSlice";
+import { updateUser } from "../../../../Redux/listUserSlice/listUserSlice";
 
-const AddUser = ({ form, setIsModalAddOpen }) => {
+export default function EditUser({ form, infoUser, setIsModalEditOpen }) {
   const dispatch = useDispatch();
-  const onFinish = (values) => {
-    let addUser = async () => {
-      try {
-        await themNguoiDung(values);
-        message.success("Added user successfully");
-        setIsModalAddOpen(false);
-        dispatch(fetchList());
-      } catch (err) {
-        message.error(err.response.data);
-      }
-    };
-    addUser();
-  };
+  useEffect(() => {
+    form.setFieldsValue({
+      taiKhoan: infoUser.taiKhoan,
+      maLoaiNguoiDung: infoUser.maLoaiNguoiDung,
+      soDT: infoUser.soDt,
+      email: infoUser.email,
+      hoTen: infoUser.hoTen,
+      matKhau: "",
+    });
+  }, [infoUser, form]);
 
+  const onFinish = (values) => {
+    dispatch(updateUser(values));
+    setIsModalEditOpen(false);
+  };
   return (
     <div className='flex flex-col items-center justify-center'>
-      <h1 className='font-bold text-2xl mb-5'>Add New User</h1>
+      <h1 className='font-bold text-2xl mb-5'>Edit Information</h1>
       <Form
         form={form}
         labelCol={{
@@ -49,7 +49,7 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
             },
           ]}
         >
-          <Input />
+          <Input disabled />
         </Form.Item>
 
         <Form.Item
@@ -127,13 +127,11 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
               htmlType='submit'
               className='bg-green-600 hover:bg-green-700 duration-300'
             >
-              Submit
+              Update
             </Button>
           </ConfigProvider>
         </div>
       </Form>
     </div>
   );
-};
-
-export default AddUser;
+}

@@ -40,6 +40,13 @@
                     text-align: center;
                     color: white;
                     font-size: 14px;
+                    cursor: pointer;
+                    &:hover {
+                        i {
+                            color: #f24080;
+                            transition: all 0.5s;
+                        }
+                    }
                 }
             }
         }

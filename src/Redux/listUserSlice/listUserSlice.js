@@ -5,6 +5,7 @@ import {
   timKiemNguoiDung,
   xoaNguoiDung,
 } from "../../Services/api";
+import { message } from "antd";
 
 const initialState = {
   listUser: [],
@@ -31,14 +32,12 @@ export const updateUser = createAsyncThunk(
     try {
       const response = await capNhatThongTinNguoiDung(userData);
       if (response.status === 200) {
-        console.log("response:", response);
+        message.success("Update successfully");
         dispatch(fetchList());
         return response.data;
-      } else {
-        return rejectWithValue(response.data);
       }
     } catch (error) {
-      console.log("Error updating user:", error);
+      message.error(error.response.data);
       return rejectWithValue(error.response.data);
     }
   },
@@ -50,13 +49,12 @@ export const deleteUser = createAsyncThunk(
     try {
       const response = await xoaNguoiDung(taiKhoan);
       if (response.status === 200) {
+        message.success(response.data);
         dispatch(fetchList());
         return response.data;
-      } else {
-        return rejectWithValue(response.data);
       }
     } catch (error) {
-      console.error("Error deleting user:", error);
+      message.error(error.response.data);
       return rejectWithValue(error.response.data);
     }
   },
@@ -69,11 +67,8 @@ export const searchUser = createAsyncThunk(
       const response = await timKiemNguoiDung(taiKhoan);
       if (response.status === 200) {
         return response.data;
-      } else {
-        return rejectWithValue(response.data);
       }
     } catch (error) {
-      console.log("error:", error);
       return rejectWithValue(error.response.data);
     }
   },
@@ -124,12 +119,10 @@ const listUserSlice = createSlice({
 
       .addCase(searchUser.fulfilled, (state, action) => {
         state.searchResults = action.payload;
-        // clear previous search-related errors
         state.searchError = null;
       })
       .addCase(searchUser.rejected, (state, action) => {
         state.searchError = action.error.message || "Failed to search users";
-        // clear previous search results
         state.searchResults = null;
       });
   },

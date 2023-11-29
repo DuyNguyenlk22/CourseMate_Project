@@ -68,7 +68,7 @@ export default function SearchCoursePage() {
               </div>
             </div>
             <div className='w-full md:w-[65%] item__content'>
-              <h3 className='font-bold'>{item.tenKhoaHoc}</h3>
+              <h3 className='font-bold text-xl'>{item.tenKhoaHoc}</h3>
               <p className='my-3'>
                 {item.moTa.length > 100
                   ? item.moTa.slice(0, 100) + "..."

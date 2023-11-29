@@ -66,7 +66,7 @@ export default function Categories() {
     });
   };
   return (
-    <section className='categories my-20'>
+    <section id='categories' className='categories my-20'>
       <div className='container relative'>
         <div className='categories__title text-2xl md:text-4xl font-bold mb-5 '>
           <h1>Explore</h1>

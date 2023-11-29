@@ -5,46 +5,40 @@ import { localServices } from "../../Services/localServices";
 import Search from "antd/es/input/Search";
 import { Collapse, ConfigProvider } from "antd";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
-let navitems = [
-  { navItem: "ABOUT US" },
-  { navItem: "PAGES" },
-  { navItem: "BLOG" },
-  { navItem: "SHOP" },
-  { navItem: "CONTACT" },
-];
-
-const items = [
-  {
-    key: "1",
-    label: <p className='font-bold text-xl'>MENU</p>,
-    children: (
-      <ul className='menuList flex flex-col justify-start'>
-        <li>
-          <a href='#' style={{ color: "#F24080" }}>
-            HOME
-          </a>
-        </li>
-        <li>
-          <a href='#'>ABOUT US</a>
-        </li>
-        <li>
-          <a href='#'>PAGES</a>
-        </li>
-        <li>
-          <a href='#'>BLOG</a>
-        </li>
-        <li>
-          <a href='#'>SHOP</a>
-        </li>
-        <li>
-          <a href='#'>CONTACT</a>
-        </li>
-      </ul>
-    ),
-  },
-];
+import { dataHeader } from "./dataHeader";
 
 export default function UserHeaderMoblie() {
+  const items = [
+    {
+      key: "1",
+      label: <p className='font-bold text-xl'>MENU</p>,
+      children: (
+        <ul className='menuList flex flex-col justify-start'>
+          {dataHeader.items.map((item, index) => {
+            return (
+              <li key={`item${index}`}>
+                <a
+                  onClick={() => {
+                    navigate(`/`);
+                    const element = document.getElementById(item.navItem);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  href={`#${item.itemID}`}
+                >
+                  {item.navItem}
+                </a>
+              </li>
+            );
+          })}
+          <li>
+            <NavLink to={"/contact"}>CONTACT</NavLink>
+          </li>
+        </ul>
+      ),
+    },
+  ];
   let { info } = useSelector((state) => state.userSlice);
   let navigate = useNavigate();
   const onSearch = (value, _e) => {
@@ -107,11 +101,9 @@ export default function UserHeaderMoblie() {
       <div className='header__top'>
         <div className='iconHeader flex justify-between items-center container'>
           <div className='space-x-2'>
-            <i className='fa-brands fa-facebook' />
-            <i className='fa-brands fa-twitter' />
-            <i className='fa-brands fa-youtube' />
-            <i className='fa-brands fa-instagram' />
-            <i className='fa-brands fa-linkedin ' />
+            {dataHeader.icons.map((item, index) => {
+              return <i key={`icon-${index}`} className={item.nameIcon} />;
+            })}
           </div>
           <div>{renderButton()}</div>
         </div>

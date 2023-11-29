@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Table, Tag, Input, Button, message } from "antd";
+import {
+  Modal,
+  Table,
+  Tag,
+  Input,
+  Button,
+  message,
+  ConfigProvider,
+  Form,
+} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUser,
   fetchList,
-  updateUser,
   searchUser,
 } from "../../../../Redux/listUserSlice/listUserSlice";
-import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  PlusCircleOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import FormEnrollment from "./FormEnrollment";
-import { useNavigate } from "react-router-dom";
 import { setTaiKhoan } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
+import AddUser from "../AddUser/AddUser";
+import EditUser from "../EditUser/EditUser";
 
 export default function TableUser() {
   const columns = [
@@ -57,7 +70,9 @@ export default function TableUser() {
         return (
           <div className='space-x-8'>
             <button
-              onClick={() => handleEditClick(user)}
+              onClick={() => {
+                showModalEdit(user);
+              }}
               className='text-2xl text-yellow-400 hover:text-yellow-500 duration-300'
             >
               <i className='fa-solid fa-pen-to-square'></i>
@@ -70,7 +85,7 @@ export default function TableUser() {
             </button>
             <button
               onClick={() => {
-                showModal(user);
+                showModalEnroll(user);
               }}
               className='text-2xl text-green-400 hover:text-green-500 duration-300'
             >
@@ -82,84 +97,63 @@ export default function TableUser() {
     },
   ];
   let dataSource = [];
-  const navigate = useNavigate();
-  const [isModalVisible, setIsModalVisible] = useState(true);
-  const [currentUser, setCurrentUser] = useState(null);
   const [searchResult, setSearchResult] = useState(null);
   const [isSearch, setIsSearch] = useState(false);
   const dispatch = useDispatch();
   const { listUser } = useSelector((state) => state.listUserSlice);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = (user) => {
+  const [isModalEnrollOpen, setIsModalEnrollOpen] = useState(false);
+  const [isModalAddOpen, setIsModalAddOpen] = useState(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
+  const [infoUser, setInfoUser] = useState(null);
+  const [form] = Form.useForm();
+
+  const showModalEnroll = (user) => {
     dispatch(setTaiKhoan(user.taiKhoan));
-    setIsModalOpen(true);
+    setIsModalEnrollOpen(true);
+  };
+  const handleCancelEroll = () => {
+    setIsModalEnrollOpen(false);
+  };
+  const showModalAdd = () => {
+    form.resetFields();
+    setIsModalAddOpen(true);
+  };
+  const handleCancelAdd = () => {
+    setIsModalAddOpen(false);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
+  const showModalEdit = (user) => {
+    setIsModalEditOpen(true);
+    setInfoUser(user);
   };
-  const handleCancel = () => {
-    setIsModalOpen(false);
+  const handleCancelEdit = () => {
+    setIsModalEditOpen(false);
   };
 
   useEffect(() => {
     dispatch(fetchList());
   }, [dispatch]);
 
-  if (isSearch) {
-    searchResult?.map((item, index) =>
-      dataSource.push({
-        key: index + 1,
-        stt: index + 1,
-        ...item,
-      }),
-    );
-  } else {
-    listUser?.map((item, index) =>
-      dataSource.push({
-        key: index + 1,
-        stt: index + 1,
-        ...item,
-      }),
-    );
-  }
+  let dataUser = isSearch ? searchResult : listUser;
 
-  const handleModalCancel = () => {
-    setIsModalVisible(false);
-    setCurrentUser(null);
-  };
-
-  const handleEditClick = (user) => {
-    console.log("user:", user);
-    setCurrentUser(user);
-    setIsModalVisible(true);
-    console.log(`Modal visibility state: ${isModalVisible}`);
-  };
+  dataUser?.map((item, index) =>
+    dataSource.push({
+      key: index + 1,
+      stt: index + 1,
+      ...item,
+    }),
+  );
 
   const handleDelete = (taiKhoan) => {
-    Modal.confirm({
-      title: "Bạn có chắc muốn xóa người dùng này?",
-      content: "Hành động này không thể đảo ngược",
-      onOk: () => {
-        dispatch(deleteUser(taiKhoan)).then((response) => {
-          if (response.meta.requestStatus === "fulfilled") {
-            message.success("Người dùng đã bị xóa");
-          } else {
-            message.error("Đã có lỗi xảy ra");
-          }
-        });
-      },
-    });
+    dispatch(deleteUser(taiKhoan));
   };
 
-  const handleSearch = (value) => {
-    dispatch(searchUser(value))
+  const handleSearch = (e) => {
+    dispatch(searchUser(e.target.value))
       .then((action) => {
         if (action.type === "listUser/searchUser/fulfilled") {
           setSearchResult(action.payload);
-          setIsSearch(true);
-        } else {
-          message.error("Tìm kiếm thất bại:", action.error);
+          setIsSearch(e.target.value);
         }
       })
       .catch((error) => {
@@ -167,40 +161,73 @@ export default function TableUser() {
       });
   };
 
-  const handleClearSearch = () => {
-    setIsSearch(false);
-    dispatch(fetchList());
-  };
-
   return (
     <div>
-      <Modal
-        footer={null}
-        centered
-        width={"60%"}
-        closeIcon={<CloseOutlined className='text-black' />}
-        okType={"default"}
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <FormEnrollment />
-      </Modal>
-      <div className='search-bar'>
-        <h3>Tìm kiếm</h3>
-        <Input.Search
-          placeholder='Nhập tài khoản người dùng'
-          enterButton='Tìm kiếm'
-          onSearch={handleSearch}
-        />
-        <Button onClick={handleClearSearch} className='clea-search-button'>
-          Ngưng tìm kiếm
-        </Button>
+      <div id='modal__enroll'>
+        <Modal
+          footer={null}
+          centered
+          width={"60%"}
+          closeIcon={<CloseOutlined className='text-black' />}
+          okType={"default"}
+          open={isModalEnrollOpen}
+          onCancel={handleCancelEroll}
+        >
+          <FormEnrollment />
+        </Modal>
       </div>
 
-      <Button type='default' icon={<PlusOutlined />}>
-        Thêm người dùng
-      </Button>
+      <ConfigProvider
+        theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
+      >
+        <Button
+          onClick={showModalAdd}
+          type='default'
+          className='flex items-center bg-green-600 hover:bg-green-700 duration-300'
+        >
+          <PlusCircleOutlined /> Add New User
+        </Button>
+      </ConfigProvider>
+
+      <div id='modal__addUser'>
+        <Modal
+          footer={null}
+          centered
+          width={"60%"}
+          closeIcon={<CloseOutlined className='text-black' />}
+          okType={"default"}
+          open={isModalAddOpen}
+          onCancel={handleCancelAdd}
+        >
+          <AddUser form={form} setIsModalAddOpen={setIsModalAddOpen} />
+        </Modal>
+      </div>
+      <div id='modal__editUser'>
+        <Modal
+          footer={null}
+          centered
+          width={"60%"}
+          closeIcon={<CloseOutlined className='text-black' />}
+          okType={"default"}
+          open={isModalEditOpen}
+          onCancel={handleCancelEdit}
+        >
+          <EditUser
+            infoUser={infoUser}
+            form={form}
+            setIsModalAddOpen={setIsModalAddOpen}
+            setIsModalEditOpen={setIsModalEditOpen}
+          />
+        </Modal>
+      </div>
+      <div className='search-bar my-5'>
+        <Input
+          suffix={<SearchOutlined />}
+          placeholder='Input search text...'
+          onChange={handleSearch}
+          size='large'
+        />
+      </div>
 
       <Table bordered columns={columns} dataSource={dataSource} />
     </div>

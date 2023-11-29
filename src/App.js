@@ -13,7 +13,8 @@ import AdminHomePage from "./Page/Admin/AdminHomePage";
 import { localServices } from "./Services/localServices";
 import CourseDetailPage from "./Page/User/CourseDetailPage/CourseDetailPage";
 import AddUser from "./Page/Admin/user/AddUser/AddUser";
-import Loading from "./Components/Loading/Loading";
+// import Loading from "./Components/Loading/Loading";
+import Contact from "./Page/User/Contact/Contact";
 
 function App() {
   let info = localServices.get();
@@ -76,6 +77,14 @@ function App() {
       ),
     },
     { path: "/*", element: <NotFoundPage /> },
+    {
+      path: "/contact",
+      element: (
+        <Layout>
+          <Contact />
+        </Layout>
+      ),
+    },
   ];
 
   const adminRoutes = [

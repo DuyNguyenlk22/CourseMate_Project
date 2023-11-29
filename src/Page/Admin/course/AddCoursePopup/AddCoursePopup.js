@@ -26,7 +26,6 @@ export default function AddCoursePopup({ fetchDataCourseList }) {
         <PlusCircleOutlined /> Add New Course
       </Button>
       <Modal
-        title='Thêm khoá học'
         width={"60%"}
         footer={false}
         open={isModalOpen}
