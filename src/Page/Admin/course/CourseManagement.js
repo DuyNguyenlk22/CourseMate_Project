@@ -114,7 +114,7 @@ export default function CourseManagement({ setSelectedItem, setSelectedCourse })
         <button className='h-11 w-10 text-2xl border-none font-extrabold text-green-500 hover:text-green-700 flex align-middle justify-center'
           onClick={() => { handleMoveToEnrollment(course.maKhoaHoc) }}
           title={'Move to All Enrollment of this Course'}
-        ><i class="fa-regular fa-calendar"></i></button>
+        ><i className="fa-regular fa-calendar"></i></button>
       </div>,
     }
     courseData.push(dataRow);
