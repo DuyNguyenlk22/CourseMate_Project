@@ -132,7 +132,7 @@ export default function CourseDetailPage() {
             <div className="left-center lg:grid lg:grid-cols-1 md:grid md:grid-cols-2 md:gap-4 grid grid-cols-1">
               <div className='course-info shadow-pink-100 shadow-lg rounded-lg p-5 my-5'>
                 <div className="m-4"><img className='rounded-xl' src={courseDetail?.hinhAnh ? courseDetail.hinhAnh : ''} alt='' /></div>
-                <ul className='md:ml-5 ml-24'>
+                <ul className='ml-5'>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-clock"></i>Name : {courseDetail?.tenKhoaHoc ? courseDetail.tenKhoaHoc : ''}</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-clock"></i>Time Duration : 12 weeks</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-book-open-reader"></i>Study Lecture : 24 Lectures</li>
@@ -155,19 +155,19 @@ export default function CourseDetailPage() {
                     </div>
                   </li>
                   <li className='flex border-b-2 border-white-500 border-dotted'>
-                    <img className='w-20 m-3 rounded-md' src='https://demo.bosathemes.com/html/educator/assets/img/educator-img12.jpg' alt='' />
+                    <img className='w-20 m-3 rounded-md' src='https://i.pinimg.com/236x/2b/59/ce/2b59ceac8b9e2324d8f8ea3261a4a04c.jpg' alt='' />
                     <div className="flex items-center">
                       <p className='text-white font-semibold'>Data Science Fundamentals: From Basics to Advanced</p>
                     </div>
                   </li>
                   <li className='flex border-b-2 border-white-500 border-dotted'>
-                    <img className='w-20 m-3 rounded-md' src='https://demo.bosathemes.com/html/educator/assets/img/educator-img12.jpg' alt='' />
+                    <img className='w-20 m-3 rounded-md' src='https://i.pinimg.com/236x/4b/6a/37/4b6a37c56b81a18713f655f6bcc3e3f0.jpg' alt='' />
                     <div className="flex items-center">
                       <p className='text-white font-semibold'>Network Security Essentials</p>
                     </div>
                   </li>
                   <li className='flex'>
-                    <img className='w-20 m-3 rounded-md' src='https://demo.bosathemes.com/html/educator/assets/img/educator-img12.jpg' alt='' />
+                    <img className='w-20 m-3 rounded-md' src='https://i.pinimg.com/236x/87/db/b7/87dbb7f8bee7c3b802b8d7c453fcba87.jpg' alt='' />
                     <div className="flex items-center">
                       <p className='text-white font-semibold'>Cloud Computing and DevOps Certification</p>
                     </div>
