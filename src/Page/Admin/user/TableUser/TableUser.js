@@ -70,6 +70,7 @@ export default function TableUser() {
         return (
           <div className='space-x-8'>
             <button
+              title='Edit'
               onClick={() => {
                 showModalEdit(user);
               }}
@@ -78,12 +79,14 @@ export default function TableUser() {
               <i className='fa-solid fa-pen-to-square'></i>
             </button>
             <button
+              title='Delete'
               onClick={() => handleDelete(user.taiKhoan)}
               className='text-2xl text-red-600 hover:text-red-700 duration-300'
             >
               <i className='fa-solid fa-square-xmark '></i>
             </button>
             <button
+              title='Enroll'
               onClick={() => {
                 showModalEnroll(user);
               }}

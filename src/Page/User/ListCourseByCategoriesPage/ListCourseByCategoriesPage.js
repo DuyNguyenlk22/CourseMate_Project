@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { layKhoaHocTheoDanhMuc } from "../../../Services/api";
 import { Rate } from "antd";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import "./ListCourseByCategoriesPage.scss";
 export default function ListCourseByCategoriesPage() {
   const { info } = useSelector((state) => state.userSlice);
   const [listItem, setListItem] = useState([]);
+  const navigate = useNavigate();
 
   let { maDanhMuc } = useParams();
 
@@ -96,7 +97,7 @@ export default function ListCourseByCategoriesPage() {
                     <NavLink
                       to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}
                     >
-                      <span className='text-xs md:text-sm'>ENROLL COURSE</span>
+                      <span className='text-xs md:text-sm'>DETAIL</span>
                       <i className='fa-solid fa-arrow-right ml-3'></i>
                     </NavLink>
                   </div>
@@ -115,8 +116,25 @@ export default function ListCourseByCategoriesPage() {
           <i className='fa-solid fa-desktop text-[#f24080] '></i>
           <span className='ml-3 font-bold'>{maDanhMuc} Programming</span>
         </div>
+
         <div className='listCourse__allItem grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-8 mt-5'>
           {renderListCourseItem()}
+        </div>
+        <div className='text-center mt-8'>
+          Choose another categories{" "}
+          <a
+            onClick={() => {
+              navigate("/");
+              const element = document.getElementById("categories");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className='underline text-[#f24080]'
+            href='#categories'
+          >
+            Here
+          </a>
         </div>
       </div>
     </div>

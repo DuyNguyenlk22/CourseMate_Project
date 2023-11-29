@@ -91,7 +91,7 @@ export default function CourseList() {
                   </div>
                   <div className='hover:text-[#961040] hover:font-semibold duration-300'>
                     <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
-                      <span className='text-xs md:text-sm'>ENROLL COURSE</span>
+                      <span className='text-xs md:text-sm'>DETAIL</span>
                       <i className='fa-solid fa-arrow-right ml-3'></i>
                     </NavLink>
                   </div>

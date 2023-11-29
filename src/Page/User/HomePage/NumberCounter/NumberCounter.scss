@@ -8,9 +8,9 @@
                 position: relative;
                 .btnPlay {
                     position: absolute;
-                    top: 50%;
+                    top: 45%;
                     left: 50%;
-                    transform: translate(-50%);
+                    transform: translateX(-50%);
                 }
             }
         }
@@ -85,9 +85,8 @@
     .ant-modal {
         .ant-modal-content {
             .ant-modal-close {
-                color: white;
                 right: 0;
-                top: 5px;
+                top: 0;
             }
         }
     }

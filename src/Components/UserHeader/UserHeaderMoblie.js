@@ -18,6 +18,7 @@ export default function UserHeaderMoblie() {
             return (
               <li key={`item${index}`}>
                 <a
+                  className='block'
                   onClick={() => {
                     navigate(`/`);
                     const element = document.getElementById(item.navItem);
@@ -33,7 +34,9 @@ export default function UserHeaderMoblie() {
             );
           })}
           <li>
-            <NavLink to={"/contact"}>CONTACT</NavLink>
+            <NavLink className='block' to={"/contact"}>
+              CONTACT
+            </NavLink>
           </li>
         </ul>
       ),
@@ -56,7 +59,7 @@ export default function UserHeaderMoblie() {
             <span className='hover:text-[#961040] duration-300 flex items-center'>
               <img
                 src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
-                className='w-5 rounded-full'
+                className='w-6 mr-2 rounded-full'
                 alt='...'
               />
               {info.hoTen}
@@ -65,9 +68,9 @@ export default function UserHeaderMoblie() {
 
           <button
             onClick={handleLogOut}
-            className='ml-1 hover:text-[#961040] duration-300'
+            className='ml-4 hover:text-[#961040] duration-300'
           >
-            <i className='fa-solid fa-right-from-bracket mr-2'></i>
+            <i className='fa-solid fa-right-from-bracket mr-1'></i>
             <span>Log Out</span>
           </button>
         </div>
@@ -119,7 +122,7 @@ export default function UserHeaderMoblie() {
               />
             </NavLink>
           </div>
-          <div className='flex items-center w-[200px] searchBar'>
+          <div className='flex items-center searchBar'>
             <Search enterButton placeholder='Search...' onSearch={onSearch} />
           </div>
         </div>

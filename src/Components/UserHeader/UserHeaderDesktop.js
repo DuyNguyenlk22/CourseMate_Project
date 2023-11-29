@@ -33,7 +33,7 @@ export default function UserHeaderDesktop() {
           <a
             onClick={() => {
               navigate(`/`);
-              const element = document.getElementById(item.navItem);
+              const element = document.getElementById(item.itemID);
               if (element) {
                 element.scrollIntoView({ behavior: "smooth" });
               }
@@ -55,7 +55,7 @@ export default function UserHeaderDesktop() {
             <span className='hover:text-[#961040] duration-300 flex items-center'>
               <img
                 src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
-                className='w-8 rounded-full'
+                className='w-8 mr-2 rounded-full'
                 alt='...'
               />
               {info.hoTen}

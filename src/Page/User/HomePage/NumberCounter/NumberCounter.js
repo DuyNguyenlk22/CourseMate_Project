@@ -3,6 +3,7 @@ import "./NumberCounter.scss";
 import { ConfigProvider, Modal } from "antd";
 import CountUp from "react-countup";
 import ReactPlayer from "react-player";
+import { CloseOutlined } from "@ant-design/icons";
 
 export default function NumberCounter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function NumberCounter() {
               <div className='btnPlay'>
                 <button
                   onClick={showModal}
-                  className='w-[40px] h-[40px] leading-[40px] text-2xl md:w-[80px] md:h-[80px] md:leading-[80px] md:text-4xl text-center text-white  bg-[#f24080] hover:bg-[#961040] rounded-full duration-300'
+                  className='w-[60px] h-[60px] leading-[60px] text-2xl md:w-[80px] md:h-[80px] md:leading-[80px] md:text-4xl text-center text-white  bg-[#f24080] hover:bg-[#961040] rounded-full duration-300'
                 >
                   <i className='fa-solid fa-play'></i>
                 </button>
@@ -44,7 +45,8 @@ export default function NumberCounter() {
                     open={isModalOpen}
                     footer={null}
                     onCancel={handleCancel}
-                    width={"80%"}
+                    width={"65%"}
+                    closeIcon={<CloseOutlined className='text-black' />}
                   >
                     <div className='player-wrapper'>
                       <ReactPlayer

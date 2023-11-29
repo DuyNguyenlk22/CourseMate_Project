@@ -120,9 +120,7 @@ export default function AllCoursePage() {
                           info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`
                         }
                       >
-                        <span className='text-xs md:text-sm'>
-                          ENROLL COURSE
-                        </span>
+                        <span className='text-xs md:text-sm'>DETAIL</span>
                         <i className='fa-solid fa-arrow-right ml-3'></i>
                       </NavLink>
                     </div>

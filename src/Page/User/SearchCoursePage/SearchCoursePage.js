@@ -28,22 +28,6 @@ export default function SearchCoursePage() {
     };
     getListCourse();
   }, [param.tenKhoaHoc]);
-  let handleEnrollCourse = async (maKhoaHoc) => {
-    if (info) {
-      try {
-        let dataEnroll = {
-          maKhoaHoc,
-          taiKhoan: localServices?.get().taiKhoan,
-        };
-        let res = await dangKyKhoaHoc(dataEnroll);
-        message.success(res.data);
-      } catch (err) {
-        message.error(err.response?.data);
-      }
-    } else {
-      navigate("/signIn");
-    }
-  };
 
   let renderListCourseByName = () => {
     if (listCourseByName !== undefined) {
@@ -99,20 +83,12 @@ export default function SearchCoursePage() {
                 />
               </div>
               <div className='item__creator'>
-                <div className='space-x-4 mt-4 flex justify-center'>
+                <div className='space-x-4 mt-4 flex justify-center md:justify-end'>
                   <NavLink
                     to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}
                   >
                     <button className='btnGlobal'>Detail</button>
                   </NavLink>
-                  <button
-                    onClick={() => {
-                      handleEnrollCourse(item.maKhoaHoc);
-                    }}
-                    className='btnGlobal '
-                  >
-                    Enroll Course
-                  </button>
                 </div>
               </div>
             </div>
