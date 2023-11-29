@@ -64,16 +64,19 @@ export default function SignInPage() {
     };
     logIn();
   };
-  return <div id='signIn' className='w-screen h-screen relative bg-black'>
+  return <div id='signIn' className='w-screen h-screen relative' style={{
+    backgroundImage: 'url(./image/bgLogin.png)',
+    backgroundSize: 'cover'
+  }}>
     <div className='container border '>
-      <div className='rounded-2xl overflow-hidden text-center max-w-800 absolute bg-purple-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2'>
-        <div class="flex flex-between max-w-800 relative bg-purple-100">
+      <div className='rounded-2xl overflow-hidden text-center max-w-800 absolute bg-purple-100 bg-opacity-60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2'>
+        <div class="flex flex-between max-w-800 relative bg-purple-100 bg-opacity-60">
           <button
             onClick={() => { setIsUserLogin(true) }}
-            className={`w-1/2 font-bold text-xl transition-all ${isUserLogin ? 'bg-purple-100 text-pink-500' : 'bg-white rounded-br-xl'}  p-5`}>USER</button>
+            className={`w-1/2 font-bold text-xl transition-all bg-opacity-60 ${isUserLogin ? 'bg-purple-100 text-pink-500' : 'bg-white rounded-br-xl'}  p-5`}>USER</button>
           <button
             onClick={() => { setIsUserLogin(false) }}
-            className={`w-1/2 font-bold text-xl transition-all ${!isUserLogin ? 'bg-purple-100 text-pink-500' : 'bg-white rounded-bl-xl'}  p-5`}>ADMIN</button>
+            className={`w-1/2 font-bold text-xl transition-all bg-opacity-60 ${!isUserLogin ? 'bg-purple-100 text-pink-500' : 'bg-white rounded-bl-xl'}  p-5`}>ADMIN</button>
         </div>
         <div className="lg:p-20 p-5 border w-full max-w-800">
           <Form
