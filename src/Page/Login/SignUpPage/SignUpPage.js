@@ -13,6 +13,12 @@ export default function SignUpPage() {
       sm: {
         span: 8,
       },
+      md: {
+        span: 6,
+      },
+      lg: {
+        span: 4,
+      }
     },
     wrapperCol: {
       xs: {
@@ -21,6 +27,9 @@ export default function SignUpPage() {
       sm: {
         span: 16,
       },
+      lg: {
+        span: 24,
+      }
     },
   };
   const handleSubmit = (values) => {
@@ -39,18 +48,22 @@ export default function SignUpPage() {
     };
     fetchDataUserRegister();
   };
-  return <div id='signUp' className='w-screen h-screen relative bg-black'>
+
+  return <div id='signUp' className='w-screen h-screen relative ' style={{
+    backgroundImage: 'url(./image/bgLogin.png)',
+    backgroundSize: 'cover'
+  }}>
     <div className='container border'>
       <div className='text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2'>
         <Form
-          className=' lg:p-20 p-5 border bg-white rounded-2xl'
+          className=' lg:p-20 p-5 border bg-purple-100 bg-opacity-60 rounded-2xl'
           theme={'dark'}
           {...formItemLayout}
           form={form}
           name="register"
           onFinish={handleSubmit}
           style={{
-            maxWidth: 1200,
+            maxWidth: 800,
           }}
           scrollToFirstError
         >
