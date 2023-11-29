@@ -63,15 +63,21 @@ export default function CourseManagement({
       )
         return;
       let response = await layDanhSachKhoaHocTheoTen(searchValue);
+      console.log("searchValue: ", searchValue);
+      console.log("response: ", response);
       setCourseSearchList(response.data);
       setIsSearch(true);
       message.success(
         `There are ${response.data.length} results fit your search key.`,
       );
-    } catch {
-      message.error(
-        "There are some conspicuous error, please try again later.",
-      );
+    } catch (error) {
+      if (error.response.status === 404) {
+        setCourseSearchList([]);
+        setIsSearch(true);
+        message.error("There is 0 result fit your search key.");
+      } else {
+        message.error("An unexpected error occurred. Please try again later.");
+      }
     }
   };
   const handleSearchCancel = () => {
