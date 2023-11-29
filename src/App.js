@@ -18,7 +18,6 @@ import Contact from "./Page/User/Contact/Contact";
 
 function App() {
   let info = localServices.get();
-  console.log("info: ", info);
   let isAdmin;
   if (info !== null && info !== undefined) {
     isAdmin = info.maLoaiNguoiDung === "GV";

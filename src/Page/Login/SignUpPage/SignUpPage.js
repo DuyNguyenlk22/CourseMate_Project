@@ -13,6 +13,12 @@ export default function SignUpPage() {
       sm: {
         span: 8,
       },
+      md: {
+        span: 6,
+      },
+      lg: {
+        span: 2,
+      }
     },
     wrapperCol: {
       xs: {
@@ -21,6 +27,9 @@ export default function SignUpPage() {
       sm: {
         span: 16,
       },
+      lg: {
+        span: 24,
+      }
     },
   };
   const handleSubmit = (values) => {
@@ -39,6 +48,7 @@ export default function SignUpPage() {
     };
     fetchDataUserRegister();
   };
+
   return <div id='signUp' className='w-screen h-screen relative bg-black'>
     <div className='container border'>
       <div className='text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2'>
@@ -50,7 +60,7 @@ export default function SignUpPage() {
           name="register"
           onFinish={handleSubmit}
           style={{
-            maxWidth: 1200,
+            maxWidth: 800,
           }}
           scrollToFirstError
         >
