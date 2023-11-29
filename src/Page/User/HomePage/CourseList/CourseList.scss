@@ -81,6 +81,14 @@
         font-weight: 800;
     }
 }
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+    left: -5px !important;
+}
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+    right: -5px !important;
+}
 
 @media screen and (max-width: 768px) {
     .courseList {

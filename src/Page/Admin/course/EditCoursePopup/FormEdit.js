@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { localServices } from "../../../../Services/localServices";
 import { Button, DatePicker, Form, Image, Input, Select, message } from "antd";
 import { useSelector } from "react-redux";
 import { capNhatKhoaHocUpload } from "../../../../Services/api";
@@ -23,12 +22,28 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
         nguoiTao: infoCourse.nguoiTao.hoTen,
         ngayTao: dayjs(infoCourse.ngayTao, "DD/MM/YYYY"),
         maNhom: infoCourse.maNhom,
-        hinhAnh: infoCourse.hinhAnh,
+        // hinhAnh: infoCourse.hinhAnh,
         moTa: infoCourse.moTa,
         taiKhoanNguoiTao: infoCourse.nguoiTao.taiKhoan,
       });
+      setImgSrc(infoCourse.hinhAnh);
     }
   }, [form, infoCourse]);
+  const handleChangeFile = (e) => {
+    let file = e.target.files[0];
+    setSelectedImg(file);
+    if (
+      file.type === "image/jpeg" ||
+      file.type === "image/jpg" ||
+      file.type === "image/png"
+    ) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImgSrc(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const onFinish = async (values) => {
     const formData = new FormData();
@@ -41,37 +56,20 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
     if (selectedImg) {
       formData.append("hinhAnh", selectedImg, selectedImg.name);
     }
+    // for (let values of formData.entries()) {
+    //   const [key, value] = values;
+    //   console.log(key + ":" + value);
+    // }
     try {
       await capNhatKhoaHocUpload(formData);
       message.success("Updated successfully");
       fetchDataCourseList();
       setIsModalEditOpen(false);
+      setImgSrc(null);
     } catch (err) {
-      message.error(err.response.data);
+      message.error(err.response?.data);
     }
   };
-
-  const handleChangeFile = (e) => {
-    let file = e.target.files[0];
-    setSelectedImg(file);
-    if (
-      file.type === "image/jpeg" ||
-      file.type === "image/jpg" ||
-      file.type === "image/png"
-    ) {
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        setImgSrc(e.target.result);
-      };
-    }
-  };
-
-  useEffect(() => {
-    form.setFieldsValue({
-      taiKhoanNguoiTao: localServices?.get().taiKhoan,
-    });
-  }, [form]);
 
   return (
     <>
@@ -101,7 +99,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
             <Input />
           </Form.Item>
           <Form.Item
-            label='Mã khoá học'
+            label='Course code'
             name='maKhoaHoc'
             rules={[
               {
@@ -250,26 +248,13 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
               }}
             />
           </Form.Item>
-          <Form.Item
-            label='Hình ảnh'
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng chọn hình ảnh",
-                whitespace: true,
-              },
-            ]}
-          >
+          <Form.Item label='Picture' name='hinhAnh' hasFeedback>
             <input
               type='file'
               onChange={handleChangeFile}
               accept='image/png , image/jpeg , image/jpg'
             />
-            <Image
-              src={imgSrc === null ? infoCourse.hinhAnh : imgSrc}
-              width={100}
-              height={100}
-            />
+            {imgSrc && <Image src={imgSrc} width={100} height={100} />}
           </Form.Item>
           <div className='flex justify-center'>
             <Button

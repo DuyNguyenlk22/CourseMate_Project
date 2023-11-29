@@ -21,13 +21,14 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
     }
     // for (let values of formData.entries()) {
     //   const [key, value] = values;
-    //   console.log("key:", key, "-", "value:", value);
+    //   console.log(key + ":" + value);
     // }
     try {
       await themKhoaHocUploadHinh(formData);
       message.success("Add course successfully");
       fetchDataCourseList();
       setIsModalOpen(false);
+      setImgSrc(null);
     } catch (error) {
       message.error(error.message);
     }
@@ -75,7 +76,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
           }}
           className='w-[80%]'
           initialValues={{
-            maDanhMucKhoaHoc: "Choose course",
+            maDanhMucKhoaHoc: " ",
           }}
         >
           <Form.Item
@@ -152,6 +153,10 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
           >
             <Select
               options={[
+                {
+                  label: "Choose Categories",
+                  disabled: true,
+                },
                 {
                   value: "BackEnd",
                   label: "BackEnd",
@@ -267,16 +272,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
               ]}
             />
           </Form.Item>
-          <Form.Item
-            label='Picture'
-            rules={[
-              {
-                required: true,
-                message: "Please input picture",
-                whitespace: true,
-              },
-            ]}
-          >
+          <Form.Item label='Picture' name='hinhAnh'>
             <input
               type='file'
               onChange={handleChangeFile}

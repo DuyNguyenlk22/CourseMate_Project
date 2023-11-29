@@ -1,4 +1,4 @@
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { PlusCircleOutlined, CloseOutlined } from "@ant-design/icons";
 import { Button, Modal, Form } from "antd";
 import React, { useState } from "react";
 import FormAdd from "./FormAdd";
@@ -32,6 +32,7 @@ export default function AddCoursePopup({ fetchDataCourseList }) {
         centered
         onOk={handleOk}
         onCancel={handleCancel}
+        closeIcon={<CloseOutlined className='text-black' />}
       >
         <FormAdd
           form={form}

@@ -15,20 +15,20 @@ import {
   setListKhoaHocDaXacThuc,
 } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
 
-export default function FormEnrollment() {
+export default function FormEnrollment({ user }) {
   const columnsKhoaHocChoXacThuc = [
     {
-      title: "STT",
+      title: "#",
       dataIndex: "stt",
       key: "stt",
     },
     {
-      title: "Tên khoá học",
+      title: "Course name",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
     },
     {
-      title: "Xác nhận",
+      title: "Action",
       render: (_, record) => {
         return (
           <div className='space-x-4'>
@@ -59,17 +59,17 @@ export default function FormEnrollment() {
   ];
   const columnsKhoaHocDaXacThuc = [
     {
-      title: "STT",
+      title: "#",
       dataIndex: "stt",
       key: "stt",
     },
     {
-      title: "Tên khoá học",
+      title: "Course name",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
     },
     {
-      title: "Xác nhận",
+      title: "Action",
       render: (_, record) => {
         return (
           <div className='space-x-4'>
@@ -107,7 +107,7 @@ export default function FormEnrollment() {
         let res = await layDanhSachKhoaHocChuaGhiDanh(taiKhoan);
         dispatch(setListKhoaHocChuaGhiDanh(res.data));
       } catch (err) {
-        message.error("Đã có lỗi xảy ra...");
+        message.error("Error...");
       }
     };
     let danhSachKhoaHocChoXetDuyet = async () => {
@@ -117,7 +117,7 @@ export default function FormEnrollment() {
         });
         dispatch(setListKhoaHocChoXetDuyet(res.data));
       } catch (err) {
-        message.error("Đã có lỗi xảy ra...");
+        message.error("Error...");
       }
     };
     let danhSachKhoaHocDaXetDuyet = async () => {
@@ -127,7 +127,7 @@ export default function FormEnrollment() {
         });
         dispatch(setListKhoaHocDaXacThuc(res.data));
       } catch (err) {
-        console.log("Đã có lỗi xảy ra...");
+        message.error("Error...");
       }
     };
     danhSachKhoaHocDaXetDuyet();
@@ -173,7 +173,7 @@ export default function FormEnrollment() {
           maKhoaHoc: maKhoaHoc,
           taiKhoan: taiKhoan,
         });
-        message.success("Ghi danh thành công");
+        message.success("Enrollment successful");
         setMaKhoaHoc(null);
         let res = await layDanhSachKhoaHocDaXetDuyet({
           taiKhoan: taiKhoan,
@@ -192,7 +192,7 @@ export default function FormEnrollment() {
         maKhoaHoc: maKhoaHoc,
         taiKhoan: taiKhoan,
       });
-      message.success("Ghi danh thành công");
+      message.success("Enrollment successful");
       let res = await layDanhSachKhoaHocChoXetDuyet({
         taiKhoan: taiKhoan,
       });
@@ -212,7 +212,7 @@ export default function FormEnrollment() {
         maKhoaHoc: maKhoaHoc,
         taiKhoan: taiKhoan,
       });
-      message.success("Huỷ ghi danh thành công");
+      message.success("Enrollment cancellation successful");
       let res = await danhSach({
         taiKhoan: taiKhoan,
       });
@@ -224,17 +224,23 @@ export default function FormEnrollment() {
   return (
     <>
       <div className='flex flex-col justify-between'>
-        <h1 className='text-3xl font-bold text-center'>Ghi danh khoá học</h1>
+        <p>
+          Username:{" "}
+          <span className='text-left font-semibold'>{user.taiKhoan}</span>{" "}
+          <br />
+          Email: <span className='text-left font-semibold'> {user.email}</span>
+        </p>
+        <h1 className='text-3xl font-bold text-center'>Enroll Course</h1>
         <div className='flex items-center w-full'>
           <Select
-            defaultValue='Chọn khoá học'
+            defaultValue='Choose course'
             style={{
               width: "80%",
             }}
             onChange={handleChange}
             value={{
               label:
-                maKhoaHoc === null ? "Chọn khoá học" : maKhoaHoc.tenKhoaHoc,
+                maKhoaHoc === null ? "Choose course" : maKhoaHoc.tenKhoaHoc,
               value: maKhoaHoc,
             }}
             options={renderListKhoaHocChuaGhiDanh()}
@@ -245,7 +251,7 @@ export default function FormEnrollment() {
             }}
             className='px-4 py-2 ml-4 bg-green-500 hover:bg-green-600 text-white rounded duration-300 w-[20%]'
           >
-            Ghi danh
+            Enroll
           </button>
         </div>
         <Divider className='h-[2px] bg-slate-600' />
@@ -254,13 +260,13 @@ export default function FormEnrollment() {
             listKhoaHocChoXetDuyet.length > 0 ? "block" : "hidden"
           }`}
         >
-          <h1 className='text-xl italic'>Khoá học chờ xác thực :</h1>
+          <h1 className='text-xl italic'>Course awaiting validation :</h1>
           <Table dataSource={dataSource} columns={columnsKhoaHocChoXacThuc} />
         </div>
         <div
           className={`${listKhoaHocDaXacThuc.length > 0 ? "block" : "hidden"}`}
         >
-          <h1 className='text-xl italic'>Khoá học đã xác thực :</h1>
+          <h1 className='text-xl italic'>Course validated :</h1>
           <Table dataSource={dataSource1} columns={columnsKhoaHocDaXacThuc} />
         </div>
       </div>

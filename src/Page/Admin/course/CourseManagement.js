@@ -211,7 +211,6 @@ export default function CourseManagement({
       </div>
       <div id='modal_edit'>
         <Modal
-          title='Cập nhật khoá học'
           width={"60%"}
           footer={false}
           centered

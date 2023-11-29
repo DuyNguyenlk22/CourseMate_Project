@@ -105,9 +105,11 @@ export default function TableUser() {
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [infoUser, setInfoUser] = useState(null);
+  const [user, setUser] = useState(null);
   const [form] = Form.useForm();
 
   const showModalEnroll = (user) => {
+    setUser(user);
     dispatch(setTaiKhoan(user.taiKhoan));
     setIsModalEnrollOpen(true);
   };
@@ -173,7 +175,7 @@ export default function TableUser() {
           open={isModalEnrollOpen}
           onCancel={handleCancelEroll}
         >
-          <FormEnrollment />
+          <FormEnrollment user={user} />
         </Modal>
       </div>
 

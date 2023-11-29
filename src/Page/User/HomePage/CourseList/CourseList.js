@@ -10,10 +10,8 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Rate } from "antd";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 export default function CourseList() {
   const [courseList, setCourseList] = useState([]);
-  const { info } = useSelector((state) => state.userSlice);
   useEffect(() => {
     let getCourseList = async () => {
       try {
@@ -92,9 +90,7 @@ export default function CourseList() {
                     <span>{item.luotXem}+ students</span>
                   </div>
                   <div className='hover:text-[#961040] hover:font-semibold duration-300'>
-                    <NavLink
-                      to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}
-                    >
+                    <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
                       <span className='text-xs md:text-sm'>ENROLL COURSE</span>
                       <i className='fa-solid fa-arrow-right ml-3'></i>
                     </NavLink>

@@ -144,7 +144,7 @@ export default function AllCoursePage() {
       <div className='containerAllCourse'>
         <div className=' grid grid-cols-1 lg:grid-cols-4 lg:gap-10 sticky '>
           <div className='course__filter relative '>
-            <div className='p-4 border-2 border-gray-300 sticky top-8 rounded-xl'>
+            <div className='p-4 border-2 border-gray-300 sticky top-20 rounded-xl'>
               <h1 className='font-bold'>Filter Categories</h1>
               <div className='flex flex-col text-xl mt-3'>
                 <ConfigProvider
