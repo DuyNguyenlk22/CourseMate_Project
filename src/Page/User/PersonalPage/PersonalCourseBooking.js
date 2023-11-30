@@ -55,7 +55,7 @@ export default function PersonalCourseBooking({ userDetail }) {
             </div>
             <div>{renderUserRegisteredCourseList()}</div>
             <div className="text-right">
-                <p className='lg:text-2xl text-sm lg:p-10 py-4'>View Other Courses of Educator at <span className='cursor-pointer font-semibold underline text-purple-900'
+                <p className='lg:text-xl w-1/2 md:w-full text-sm lg:p-10 py-4'>View Other Courses of Educator at <span className='cursor-pointer font-semibold underline text-purple-900'
                     onClick={() => { navigate('/') }}>HERE</span></p>
             </div>
         </div>
