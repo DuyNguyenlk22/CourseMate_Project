@@ -1,32 +1,13 @@
-import { Divider, Select, Table, message } from "antd";
+import { Divider, Select, Table, Tabs, message } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ghiDanhKhoaHoc,
-  huyGhiDanh,
-  layDanhSachKhoaHocChoXetDuyet,
-  layDanhSachKhoaHocChuaGhiDanh,
-  layDanhSachKhoaHocDaXetDuyet,
-} from "../../../../Services/api";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import {
-  setListKhoaHocChoXetDuyet,
-  setListKhoaHocChuaGhiDanh,
-  setListKhoaHocDaXacThuc,
-} from "../../../../Redux/formEnrollSlice/formEnrollSlice";
+import { ghiDanhKhoaHoc, huyGhiDanh, layDanhSachKhoaHocChoXetDuyet, layDanhSachKhoaHocChuaGhiDanh, layDanhSachKhoaHocDaXetDuyet, } from "../../../../Services/api";
+import { setListKhoaHocChoXetDuyet, setListKhoaHocChuaGhiDanh, setListKhoaHocDaXacThuc, } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
 
 export default function FormEnrollment({ user }) {
   const columnsKhoaHocChoXacThuc = [
-    {
-      title: "#",
-      dataIndex: "stt",
-      key: "stt",
-    },
-    {
-      title: "Course name",
-      dataIndex: "tenKhoaHoc",
-      key: "tenKhoaHoc",
-    },
+    { title: "#", dataIndex: "stt", key: "stt", },
+    { title: "Course name", dataIndex: "tenKhoaHoc", key: "tenKhoaHoc", },
     {
       title: "Action",
       render: (_, record) => {
@@ -36,10 +17,7 @@ export default function FormEnrollment({ user }) {
               onClick={() => {
                 handleGhiDanhKhoaHoc(record.maKhoaHoc);
               }}
-              className='px-2 py-1 bg-green-500 rounded hover:scale-105 duration-500'
-            >
-              <CheckOutlined className='text-white font-bold text-xl' />
-            </button>
+              className='btnGlobal'>Enroll</button>
             <button
               onClick={() => {
                 handleCancelCourse(
@@ -48,26 +26,15 @@ export default function FormEnrollment({ user }) {
                   setListKhoaHocChoXetDuyet,
                 );
               }}
-              className='px-2 py-1 bg-red-500 rounded hover:scale-105 duration-500'
-            >
-              <CloseOutlined className='text-white font-bold text-xl' />
-            </button>
+              className='btnGlobalOutline'>Denied</button>
           </div>
         );
       },
     },
   ];
   const columnsKhoaHocDaXacThuc = [
-    {
-      title: "#",
-      dataIndex: "stt",
-      key: "stt",
-    },
-    {
-      title: "Course name",
-      dataIndex: "tenKhoaHoc",
-      key: "tenKhoaHoc",
-    },
+    { title: "#", dataIndex: "stt", key: "stt", },
+    { title: "Course name", dataIndex: "tenKhoaHoc", key: "tenKhoaHoc", },
     {
       title: "Action",
       render: (_, record) => {
@@ -81,10 +48,7 @@ export default function FormEnrollment({ user }) {
                   setListKhoaHocDaXacThuc,
                 );
               }}
-              className='px-2 py-1 bg-red-500 rounded hover:scale-105 duration-500'
-            >
-              <CloseOutlined className='text-white font-bold text-xl' />
-            </button>
+              className='btnGlobalOutline'>Delete</button>
           </div>
         );
       },
@@ -230,7 +194,7 @@ export default function FormEnrollment({ user }) {
           <br />
           Email: <span className='text-left font-semibold'> {user.email}</span>
         </p>
-        <h1 className='text-3xl font-bold text-center'>Enroll Course</h1>
+        <h1 className='text-3xl font-bold text-center my-5'>Enroll Course</h1>
         <div className='flex items-center w-full'>
           <Select
             defaultValue='Choose course'
@@ -249,26 +213,35 @@ export default function FormEnrollment({ user }) {
             onClick={() => {
               handleCourseEnrollmentSelected();
             }}
-            className='px-4 py-2 ml-4 bg-green-500 hover:bg-green-600 text-white rounded duration-300 w-[20%]'
+            className='px-4 py-2 ml-4 btnGlobal text-white rounded duration-300 w-[20%]'
           >
             Enroll
           </button>
         </div>
         <Divider className='h-[2px] bg-slate-600' />
-        <div
-          className={`${
-            listKhoaHocChoXetDuyet.length > 0 ? "block" : "hidden"
-          }`}
-        >
-          <h1 className='text-xl italic'>Course awaiting validation :</h1>
-          <Table dataSource={dataSource} columns={columnsKhoaHocChoXacThuc} />
-        </div>
-        <div
-          className={`${listKhoaHocDaXacThuc.length > 0 ? "block" : "hidden"}`}
-        >
-          <h1 className='text-xl italic'>Course validated :</h1>
-          <Table dataSource={dataSource1} columns={columnsKhoaHocDaXacThuc} />
-        </div>
+        <Tabs
+          defaultActiveKey="1"
+          items={[
+            {
+              label: 'Waiting Aprroval Course List',
+              key: '1',
+              children: <div
+              >
+                <h1 className='text-xl italic'>Course awaiting validation :</h1>
+                <Table dataSource={dataSource} columns={columnsKhoaHocChoXacThuc} />
+              </div>,
+            },
+            {
+              label: 'Enrolled Course List',
+              key: '2',
+              children: <div
+              >
+                <h1 className='text-xl italic'>Course validated :</h1>
+                <Table dataSource={dataSource1} columns={columnsKhoaHocDaXacThuc} />
+              </div>,
+            },
+          ]}
+        />
       </div>
     </>
   );

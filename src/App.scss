@@ -27,6 +27,7 @@ html {
         background-color: #961040;
     }
 }
+
 .btnGlobalPurple {
     padding: 8px 20px;
     font-size: 15px;
@@ -39,6 +40,7 @@ html {
         background-color: #281247;
     }
 }
+
 .ant-modal-footer {
     display: none;
 }
@@ -71,4 +73,8 @@ html {
     .container {
         width: 95% !important;
     }
+}
+
+button {
+    transition: all 0.5s;
 }

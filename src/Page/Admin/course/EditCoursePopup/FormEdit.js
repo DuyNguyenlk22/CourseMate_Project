@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { Button, DatePicker, Form, Image, Input, Select, message } from "antd";
+import { DatePicker, Form, Image, Input, Select, message } from "antd";
 import { useSelector } from "react-redux";
 import { capNhatKhoaHocUpload } from "../../../../Services/api";
 
@@ -22,7 +22,6 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
         nguoiTao: infoCourse.nguoiTao.hoTen,
         ngayTao: dayjs(infoCourse.ngayTao, "DD/MM/YYYY"),
         maNhom: infoCourse.maNhom,
-        // hinhAnh: infoCourse.hinhAnh,
         moTa: infoCourse.moTa,
         taiKhoanNguoiTao: infoCourse.nguoiTao.taiKhoan,
       });
@@ -56,10 +55,6 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
     if (selectedImg) {
       formData.append("hinhAnh", selectedImg, selectedImg.name);
     }
-    // for (let values of formData.entries()) {
-    //   const [key, value] = values;
-    //   console.log(key + ":" + value);
-    // }
     try {
       await capNhatKhoaHocUpload(formData);
       message.success("Updated successfully");
@@ -74,7 +69,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
   return (
     <>
       <div className='flex flex-col items-center justify-center'>
-        <h1 className='font-bold text-2xl mb-5'>Edit Course</h1>
+        <h1 className='font-bold text-2xl mb-5'>EDIT COURSE</h1>
         <Form
           form={form}
           name='FormAddCourse'
@@ -174,30 +169,12 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
           >
             <Select
               options={[
-                {
-                  value: "BackEnd",
-                  label: "BackEnd",
-                },
-                {
-                  value: "Design",
-                  label: "Design",
-                },
-                {
-                  value: "DiDong",
-                  label: "DiDong",
-                },
-                {
-                  value: "FrontEnd",
-                  label: "FrontEnd",
-                },
-                {
-                  value: "FullStack",
-                  label: "FullStack",
-                },
-                {
-                  value: "TuDuy",
-                  label: "TuDuy",
-                },
+                { value: "BackEnd", label: "BackEnd", },
+                { value: "Design", label: "Design", },
+                { value: "DiDong", label: "DiDong", },
+                { value: "FrontEnd", label: "FrontEnd", },
+                { value: "FullStack", label: "FullStack", },
+                { value: "TuDuy", label: "TuDuy", },
               ]}
             />
           </Form.Item>
@@ -257,13 +234,13 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
             {imgSrc && <Image src={imgSrc} width={100} height={100} />}
           </Form.Item>
           <div className='flex justify-center'>
-            <Button
+            <button
               size='large'
-              className='bg-green-500 hover:bg-green-600 duration-300 text-white'
+              className='btnGlobal duration-300 text-white'
               htmlType='submit'
             >
               Update
-            </Button>
+            </button>
           </div>
         </Form>
       </div>

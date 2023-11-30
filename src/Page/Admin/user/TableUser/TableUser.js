@@ -1,67 +1,27 @@
 import React, { useEffect, useState } from "react";
-import {
-  Modal,
-  Table,
-  Tag,
-  Input,
-  Button,
-  message,
-  ConfigProvider,
-  Form,
-} from "antd";
+import { Modal, Table, Tag, message, ConfigProvider, Form, } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteUser,
-  fetchList,
-  searchUser,
-} from "../../../../Redux/listUserSlice/listUserSlice";
-import {
-  CloseOutlined,
-  PlusCircleOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { deleteUser, fetchList, searchUser, } from "../../../../Redux/listUserSlice/listUserSlice";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import FormEnrollment from "./FormEnrollment";
 import { setTaiKhoan } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
 import AddUser from "../AddUser/AddUser";
 import EditUser from "../EditUser/EditUser";
+import Search from "antd/es/input/Search";
 
 export default function TableUser() {
   const columns = [
+    { title: "#", dataIndex: "stt", key: "stt", },
+    { title: "Username", dataIndex: "taiKhoan", key: "taiKhoan", },
+    { title: "Name", dataIndex: "hoTen", key: "hoTen", },
+    { title: "Email", dataIndex: "email", key: "email", },
+    { title: "Phone Number", dataIndex: "soDt", key: "soDt", },
     {
-      title: "#",
-      dataIndex: "stt",
-      key: "stt",
-    },
-    {
-      title: "Username",
-      dataIndex: "taiKhoan",
-      key: "taiKhoan",
-    },
-    {
-      title: "Name",
-      dataIndex: "hoTen",
-      key: "hoTen",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Phone Number",
-      dataIndex: "soDt",
-      key: "soDt",
-    },
-    {
-      title: "Type",
-      dataIndex: "maLoaiNguoiDung",
-      key: "maLoaiNguoiDung",
+      title: "Type", dataIndex: "maLoaiNguoiDung", key: "maLoaiNguoiDung",
       render: (text) => {
         if (text === "HV") {
           return <Tag color='green'>Học Viên</Tag>;
-        } else {
-          return <Tag color='red'>Giáo Viên</Tag>;
-        }
+        } else { return <Tag color='red'>Giáo Viên</Tag>; }
       },
     },
     {
@@ -173,10 +133,12 @@ export default function TableUser() {
           footer={null}
           centered
           width={"60%"}
-          closeIcon={<CloseOutlined className='text-black' />}
+          style={{ margin: '20px' }}
+          closeIcon={false}
           okType={"default"}
           open={isModalEnrollOpen}
           onCancel={handleCancelEroll}
+
         >
           <FormEnrollment user={user} />
         </Modal>
@@ -185,13 +147,13 @@ export default function TableUser() {
       <ConfigProvider
         theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
       >
-        <Button
+        <button
           onClick={showModalAdd}
           type='default'
-          className='flex items-center bg-green-600 hover:bg-green-700 duration-300'
+          className='flex items-center btnGlobal duration-300'
         >
-          <PlusCircleOutlined /> Add New User
-        </Button>
+          <PlusCircleOutlined className="mr-2" /> Add New User
+        </button>
       </ConfigProvider>
 
       <div id='modal__addUser'>
@@ -199,7 +161,7 @@ export default function TableUser() {
           footer={null}
           centered
           width={"60%"}
-          closeIcon={<CloseOutlined className='text-black' />}
+          closeIcon={false}
           okType={"default"}
           open={isModalAddOpen}
           onCancel={handleCancelAdd}
@@ -212,7 +174,7 @@ export default function TableUser() {
           footer={null}
           centered
           width={"60%"}
-          closeIcon={<CloseOutlined className='text-black' />}
+          closeIcon={false}
           okType={"default"}
           open={isModalEditOpen}
           onCancel={handleCancelEdit}
@@ -226,11 +188,13 @@ export default function TableUser() {
         </Modal>
       </div>
       <div className='search-bar my-5'>
-        <Input
-          suffix={<SearchOutlined />}
-          placeholder='Input search text...'
-          onChange={handleSearch}
+        <Search
+          enterButton
           size='large'
+          onChange={handleSearch}
+          placeholder='Input search text(phone number/name)'
+          className=' overflow-hidden rounded-lg'
+          title={"Search Data about Courses"}
         />
       </div>
 

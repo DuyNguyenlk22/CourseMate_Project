@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Form, Input, Select, message } from "antd";
+import { Form, Input, Select, message } from "antd";
 import React from "react";
 import { themNguoiDung } from "../../../../Services/api";
 import { useDispatch } from "react-redux";
@@ -25,29 +25,17 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
       <h1 className='font-bold text-2xl mb-5'>Add New User</h1>
       <Form
         form={form}
-        labelCol={{
-          span: 6,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
+        labelCol={{ span: 6, }}
+        wrapperCol={{ span: 16, }}
         className='w-[80%]'
-        initialValues={{
-          maNhom: "GP09",
-          maLoaiNguoiDung: "Choose type",
-        }}
+        initialValues={{ maNhom: "GP09", maLoaiNguoiDung: "Choose type", }}
         onFinish={onFinish}
         autoComplete='off'
       >
         <Form.Item
           label='Username'
           name='taiKhoan'
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
+          rules={[{ required: true, message: "Please input your username!", },]}
         >
           <Input />
         </Form.Item>
@@ -55,12 +43,7 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
         <Form.Item
           label='Password'
           name='matKhau'
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
+          rules={[{ required: true, message: "Please input your password!", },]}
         >
           <Input.Password />
         </Form.Item>
@@ -68,14 +51,8 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
           <Select
             className='w-full'
             options={[
-              {
-                value: "GV",
-                label: "Teacher",
-              },
-              {
-                value: "HV",
-                label: "Student",
-              },
+              { value: "GV", label: "Teacher", },
+              { value: "HV", label: "Student", },
             ]}
           />
         </Form.Item>
@@ -90,9 +67,7 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
         <Form.Item
           label='Phone Number'
           name='soDT'
-          rules={[
-            { required: true, message: "Please input your phone number!" },
-          ]}
+          rules={[{ required: true, message: "Please input your phone number!" },]}
         >
           <Input />
         </Form.Item>
@@ -101,14 +76,8 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
           name='email'
           label='E-mail'
           rules={[
-            {
-              type: "email",
-              message: "The input is not valid E-mail!",
-            },
-            {
-              required: true,
-              message: "Please input your E-mail!",
-            },
+            { type: "email", message: "The input is not valid E-mail!", },
+            { required: true, message: "Please input your E-mail!", },
           ]}
         >
           <Input />
@@ -119,17 +88,7 @@ const AddUser = ({ form, setIsModalAddOpen }) => {
         </Form.Item>
 
         <div className='flex justify-center'>
-          <ConfigProvider
-            theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
-          >
-            <Button
-              type='default'
-              htmlType='submit'
-              className='bg-green-600 hover:bg-green-700 duration-300'
-            >
-              Submit
-            </Button>
-          </ConfigProvider>
+          <button type='default' htmlType='submit' className='btnGlobal'>Submit</button>
         </div>
       </Form>
     </div>
