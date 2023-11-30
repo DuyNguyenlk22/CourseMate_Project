@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Form, Input, Select } from "antd";
+import { ConfigProvider, Form, Input, Select } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../../Redux/listUserSlice/listUserSlice";
@@ -122,13 +122,13 @@ export default function EditUser({ form, infoUser, setIsModalEditOpen }) {
           <ConfigProvider
             theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
           >
-            <Button
+            <button
               type='default'
               htmlType='submit'
-              className='bg-green-600 hover:bg-green-700 duration-300'
+              className='btnGlobal duration-300'
             >
               Update
-            </Button>
+            </button>
           </ConfigProvider>
         </div>
       </Form>

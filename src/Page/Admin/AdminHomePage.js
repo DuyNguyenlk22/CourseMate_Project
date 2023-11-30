@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ScheduleOutlined, TeamOutlined } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, message, theme } from "antd";
+import { Breadcrumb, ConfigProvider, Layout, Menu, message, theme } from "antd";
 import UserManagement from "./user/UserManagement";
 import PersonalPage from "../User/PersonalPage/PersonalPage";
 import CourseManagement from "./course/CourseManagement";
 import { Header } from "antd/es/layout/layout";
 import AdminHeader from "../../Components/AdminHeader/AdminHeader";
-import EnrollmentByCourse from "./course/EnrollmentByCourse/EnrollmentByCourse";
+import EnrollmentByCourse from "./course/EnrollmentByCoursePopup/EnrollmentByCourse";
 import { layDanhSachKhoaHoc } from "../../Services/api";
 const { Content, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -19,9 +19,7 @@ const items = [
 
 export default function AdminHomePage() {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const { token: { colorBgContainer } } = theme.useToken();
   const [selectedItem, setSelectedItem] = useState("Users");
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [courseList, setCourseList] = useState([]);
@@ -34,7 +32,7 @@ export default function AdminHomePage() {
       let response = await layDanhSachKhoaHoc();
       setCourseList(response.data);
     } catch {
-      message.error("Đã có lỗi xảy ra");
+      message.error("An error occurred");
     }
   };
   const breadcrumbItems = [
@@ -79,42 +77,45 @@ export default function AdminHomePage() {
     fetchDataCourseList();
   }, []);
   return (
-    <Layout
-      style={{ minHeight: "100vh", scrollBehavior: "smooth", overflow: "auto" }}
-    >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+    <ConfigProvider theme={{ token: { colorPrimary: '#f24080' }, }}>
+      <Layout
+        style={{ minHeight: "100vh", scrollBehavior: "smooth", overflow: "auto" }}
       >
-        <Menu
-          style={{ paddingTop: 10 }}
-          theme='dark'
-          defaultSelectedKeys={[selectedItem]}
-          mode='inline'
-          items={items}
-          onClick={({ key }) => handleMenuItemClick(key)}
-        />
-      </Sider>
-      <Layout>
-        <Header>
-          <AdminHeader />
-        </Header>
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            {breadcrumbItems}
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 900,
-              background: colorBgContainer,
-            }}
-          >
-            {componentMapping[selectedItem]}
-          </div>
-        </Content>
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
+        >
+          <Menu
+            style={{ paddingTop: 10 }}
+            theme='dark'
+            defaultSelectedKeys={[selectedItem]}
+            mode='inline'
+            items={items}
+            onClick={({ key }) => handleMenuItemClick(key)}
+            className="mt-20"
+          />
+        </Sider>
+        <Layout>
+          <Header>
+            <AdminHeader />
+          </Header>
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              {breadcrumbItems}
+            </Breadcrumb>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 900,
+                background: colorBgContainer,
+              }}
+            >
+              {componentMapping[selectedItem]}
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 }
