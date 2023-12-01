@@ -51,7 +51,7 @@ export default function UserHeaderDesktop() {
       return (
         <div className='flex items-center'>
           <NavLink to={"/personal"}>
-            <span className='hover:text-[#961040] duration-300 flex items-center'>
+            <span className='hover:text-[#961040] font-bold duration-300 flex items-center'>
               <img
                 src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
                 className='w-8 mr-2 rounded-full'
@@ -63,7 +63,7 @@ export default function UserHeaderDesktop() {
 
           <button
             onClick={handleLogOut}
-            className='ml-3 hover:text-[#961040] duration-300'>
+            className='ml-3 hover:text-[#961040] font-bold duration-300'>
             <i className='fa-solid fa-right-from-bracket mr-2'></i>
             <span>Log Out</span>
           </button>
@@ -72,13 +72,13 @@ export default function UserHeaderDesktop() {
     } else {
       return (
         <>
-          <button className='mr-4 '>
+          <button className='mr-4 font-bold'>
             <NavLink to={"/signIn"}>
               <i className='fa-solid fa-user mr-2'></i>
               <span>Sign In</span>
             </NavLink>
           </button>
-          <button>
+          <button className='font-bold'>
             <NavLink to={"/signUp"}>
               <i className='fa-solid fa-unlock mr-2'></i>
               <span>Sign Up</span>
@@ -92,7 +92,7 @@ export default function UserHeaderDesktop() {
     <div className='header'>
       <div className='header__top'>
         <div className='iconHeader flex justify-between items-center container '>
-          <div className='space-x-6'>
+          <div className='iconHeader__left space-x-6'>
             {dataHeader.icons.map((item, index) => {
               return (
                 <a href={`https://${item.link}`} target='blank'>
@@ -122,14 +122,15 @@ export default function UserHeaderDesktop() {
         </div>
       </div>
       <div className={` header__bottom ${headerFixed}`}>
-        <div className='container flex justify-between items-center py-3'>
-          <div className='hover:opacity-60 duration-300'>
-            <NavLink to={"/"}>
-              <img src='../image/educator-logo1.png' alt='...' />
+        <div className='container navbar flex justify-between items-center py-3'>
+          <div className='hover:animate-pulse duration-300'>
+            <NavLink to={"/"} className='flex items-center'>
+              <i className='fa-solid fa-graduation-cap font-extrabold text-4xl'></i>
+              <span className='text-xl font-extrabold'>CourseMate</span>
             </NavLink>
           </div>
           <nav>
-            <ul className='flex items-center space-x-8'>
+            <ul className='flex items-center space-x-8 lg:space-x-4 xl:space-x-8'>
               {renderNavItem()}
               <li>
                 <NavLink to={"/contact"}>CONTACT</NavLink>
@@ -137,9 +138,9 @@ export default function UserHeaderDesktop() {
             </ul>
           </nav>
           <div>
-            <button className='btnGlobal'>
-              <NavLink to={"/contact"}>JOIN US NOW</NavLink>
-            </button>
+            <NavLink to={"/contact"}>
+              <button className='btnGlobal'>JOIN US NOW</button>
+            </NavLink>
           </div>
         </div>
       </div>

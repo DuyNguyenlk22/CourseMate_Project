@@ -55,7 +55,7 @@ export default function UserHeaderMoblie() {
       return (
         <div className='flex items-center justify-between'>
           <NavLink to={"/personal"}>
-            <span className='hover:text-[#961040] duration-300 flex items-center'>
+            <span className='hover:text-[#961040] font-bold duration-300 flex items-center'>
               <img
                 src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
                 className='w-6 mr-2 rounded-full'
@@ -67,7 +67,7 @@ export default function UserHeaderMoblie() {
 
           <button
             onClick={handleLogOut}
-            className='ml-8 hover:text-[#961040] duration-300'>
+            className='ml-8 hover:text-[#961040] font-bold duration-300'>
             <i className='fa-solid fa-right-from-bracket mr-1'></i>
             <span>Log Out</span>
           </button>
@@ -76,13 +76,13 @@ export default function UserHeaderMoblie() {
     } else {
       return (
         <>
-          <button className='mr-6'>
+          <button className='mr-6 font-bold'>
             <NavLink to={"/signIn"}>
               <i className='fa-solid fa-user mr-2'></i>
               <span>Sign In</span>
             </NavLink>
           </button>
-          <button>
+          <button className='font-bold'>
             <NavLink to={"/signUp"}>
               <i className='fa-solid fa-unlock mr-2'></i>
               <span>Sign Up</span>
@@ -101,23 +101,15 @@ export default function UserHeaderMoblie() {
     <div className='header'>
       <div className='header__top'>
         <div className='iconHeader flex justify-end items-center container'>
-          {/* <div className='space-x-2'>
-            {dataHeader.icons.map((item, index) => {
-              return <i key={`icon-${index}`} className={item.nameIcon} />;
-            })}
-          </div> */}
           <div>{renderButton()}</div>
         </div>
       </div>
       <div className='header__middle '>
         <div className='container flex justify-between item-center py-3'>
-          <div className='hover:opacity-60 duration-300'>
-            <NavLink to={"/"}>
-              <img
-                src='../image/educator-logo1.png'
-                className='w-[75%] sm:w-full'
-                alt='...'
-              />
+          <div className='hover:animate-pulse duration-300'>
+            <NavLink to={"/"} className='flex items-center'>
+              <i className='fa-solid fa-graduation-cap font-extrabold text-4xl'></i>
+              <span className='text-xl font-extrabold'>CourseMate</span>
             </NavLink>
           </div>
           <div className='flex items-center searchBar'>

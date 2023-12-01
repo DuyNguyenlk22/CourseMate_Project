@@ -42,10 +42,10 @@ export default function ComingSoon() {
     }
   };
   return (
-    <section id='commingSoon'>
+    <section id='commingSoon' className='h-full sm:h-screen'>
       <div className='commingSoon__bg h-full md:h-screen'>
         <div className='overlay_purpil'></div>
-        <div className='container h-[90%]'>
+        <div className='container h-full flex flex-col justify-center'>
           <div className='relative z-[2]'>
             <div className='flex justify-center mt-5'>
               <NavLink to={"/"}>
@@ -66,21 +66,21 @@ export default function ComingSoon() {
               </p>
             </div>
             {/* <div className='flex justify-center'> */}
-            <div className='comingSoon__listNumber mb-16'>
+            <div className='comingSoon__listNumber mb-10 md:mb-16'>
               <Countdown date={Date.now() + 1701413929} renderer={renderer} />
             </div>
             {/* </div> */}
             <div className='comingSoon__footer flex justify-center md:justify-between items-center flex-wrap md:flex-nowrap px-8 mb-5'>
-              <div className='space-x-0 md:space-x-8'>
-                <span className='md:inline-block block'>
+              <div className='mr-5 md:mr-0 lg:space-x-8 space-y-3 md:space-y-0'>
+                <span className='lg:inline-block block'>
                   <i className='fa-solid fa-phone mr-2'></i>
                   (+984) 256 897 21
                 </span>
-                <span className='md:inline-block block'>
+                <span className='lg:inline-block block'>
                   <i className='fa-solid fa-envelope mr-2'></i>
                   info@domain.com
                 </span>
-                <span className='md:inline-block block'>
+                <span className='lg:inline-block block'>
                   <i className='fa-solid fa-location-dot mr-2'></i>
                   Ho Chi Minh, VN
                 </span>

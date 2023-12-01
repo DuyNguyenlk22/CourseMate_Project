@@ -3,7 +3,7 @@ import "./UserFooter.scss";
 import { NavLink } from "react-router-dom";
 
 let icons = [
-  { name: "fa-brands fa-facebook", href: "https://facebook.com" },
+  { name: "fa-brands fa-facebook-f", href: "https://facebook.com" },
   { name: "fa-brands fa-x-twitter", href: "https://twitter.com" },
   { name: "fa-brands fa-youtube", href: "https://youtube.com" },
   { name: "fa-brands fa-instagram", href: "https://instagram.com" },
@@ -29,7 +29,12 @@ export default function UserFooter() {
       <div className='container'>
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8 mb-20'>
           <div className=' col1 space-y-4'>
-            <img src='../image/educator-logo1.png' alt='logo' />
+            <div className='hover:animate-pulse duration-300'>
+              <NavLink to={"/"} className='flex items-center'>
+                <i className='fa-solid fa-graduation-cap font-extrabold text-4xl'></i>
+                <span className='text-xl font-extrabold'>CourseMate</span>
+              </NavLink>
+            </div>
             <p>
               Vero, tempor morbi, adipiscing aliqua nonummy proident
               perferendis? Laboris lacus quidem repellendus quasi.
@@ -78,7 +83,7 @@ export default function UserFooter() {
             </div>
             <p>Aut, quae convallis minim cum ornare! Pede dictum convallis.</p>
             <div>
-              <button className='btnGlobal'>
+              <button className='btnGlobal font-semibold'>
                 <NavLink to={"/contact"}>JOIN US NOW</NavLink>
               </button>
             </div>

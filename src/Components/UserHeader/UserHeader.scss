@@ -9,13 +9,14 @@
             color: #d9d9d9;
             font-size: 0.93rem;
             line-height: 1;
+            .iconHeader__left {
+                i {
+                    cursor: pointer;
+                    transition: all 0.5s;
 
-            i {
-                cursor: pointer;
-                transition: all 0.5s;
-
-                &:hover {
-                    color: #961040;
+                    &:hover {
+                        color: #961040;
+                    }
                 }
             }
         }
@@ -36,12 +37,15 @@
         width: 100%;
         color: white;
 
-        a {
-            font-weight: 600;
-            transition: all 0.5s;
-
-            &:hover {
-                color: #961040;
+        .navbar {
+            nav {
+                a {
+                    font-weight: 600;
+                    transition: all 0.5s;
+                    &:hover {
+                        color: #961040;
+                    }
+                }
             }
         }
     }

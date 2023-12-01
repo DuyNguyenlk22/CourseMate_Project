@@ -4,7 +4,9 @@
     .item_icon {
         height: 30px;
         width: 30px;
-        line-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #41246d;
         border-radius: 50%;
         border: 1px solid #ccc;
