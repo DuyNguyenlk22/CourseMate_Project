@@ -55,7 +55,7 @@ export default function UserHeaderMoblie() {
       return (
         <div className='flex items-center justify-between'>
           <NavLink to={"/personal"}>
-            <span className='hover:text-[#961040] font-bold duration-300 flex items-center'>
+            <span className='hover:text-[#f24080] font-bold duration-300 flex items-center'>
               <img
                 src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
                 className='w-6 mr-2 rounded-full'
@@ -67,7 +67,7 @@ export default function UserHeaderMoblie() {
 
           <button
             onClick={handleLogOut}
-            className='ml-8 hover:text-[#961040] font-bold duration-300'>
+            className='ml-8 hover:text-[#f24080] font-bold duration-300'>
             <i className='fa-solid fa-right-from-bracket mr-1'></i>
             <span>Log Out</span>
           </button>
