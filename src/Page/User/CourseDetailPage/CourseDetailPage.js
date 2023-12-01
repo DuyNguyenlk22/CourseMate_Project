@@ -6,11 +6,9 @@ import { localServices } from "../../../Services/localServices";
 import { useSelector } from "react-redux";
 
 export default function CourseDetailPage() {
-  let param = useParams();
   let navigate = useNavigate();
-  let maKhoaHoc = param.courseId;
+  let maKhoaHoc = useParams().courseId;
   let [courseDetail, setCourseDetail] = useState();
-  console.log("courseDetail: ", courseDetail);
   const { info } = useSelector((state) => state.userSlice);
 
   useEffect(() => {
