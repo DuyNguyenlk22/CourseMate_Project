@@ -15,7 +15,6 @@ export default function AllCoursePage() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [allCourse, setAllCourse] = useState([]);
   let { listCategories } = useSelector((state) => state.categoriesSlice);
-  const { info } = useSelector((state) => state.userSlice);
 
   useEffect(() => {
     let getCourseListByPage = async () => {
@@ -57,7 +56,7 @@ export default function AllCoursePage() {
             key={`item${index}`}
             className='h-full hover:shadow-xl hover:-translate-y-1 rounded-3xl duration-300 border border-[#ffffff]'
           >
-            <NavLink to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}>
+            <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
               <div className='flex flex-col justify-between rounded-3xl overflow-hidden shadow-lg h-full'>
                 <div>
                   <div className='relative '>
@@ -115,11 +114,7 @@ export default function AllCoursePage() {
                       <span>{item.luotXem}+ students</span>
                     </div>
                     <div className='hover:text-[#961040] hover:font-semibold duration-300'>
-                      <NavLink
-                        to={
-                          info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`
-                        }
-                      >
+                      <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
                         <span className='text-xs md:text-sm'>DETAIL</span>
                         <i className='fa-solid fa-arrow-right ml-3'></i>
                       </NavLink>

@@ -26,8 +26,7 @@ export default function UserHeaderMoblie() {
                       element.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  href={`#${item.itemID}`}
-                >
+                  href={`#${item.itemID}`}>
                   {item.navItem}
                 </a>
               </li>
@@ -68,8 +67,7 @@ export default function UserHeaderMoblie() {
 
           <button
             onClick={handleLogOut}
-            className='ml-4 hover:text-[#961040] duration-300'
-          >
+            className='ml-8 hover:text-[#961040] duration-300'>
             <i className='fa-solid fa-right-from-bracket mr-1'></i>
             <span>Log Out</span>
           </button>
@@ -78,7 +76,7 @@ export default function UserHeaderMoblie() {
     } else {
       return (
         <>
-          <button className='mr-2'>
+          <button className='mr-6'>
             <NavLink to={"/signIn"}>
               <i className='fa-solid fa-user mr-2'></i>
               <span>Sign In</span>
@@ -102,12 +100,12 @@ export default function UserHeaderMoblie() {
   return (
     <div className='header'>
       <div className='header__top'>
-        <div className='iconHeader flex justify-between items-center container'>
-          <div className='space-x-2'>
+        <div className='iconHeader flex justify-end items-center container'>
+          {/* <div className='space-x-2'>
             {dataHeader.icons.map((item, index) => {
               return <i key={`icon-${index}`} className={item.nameIcon} />;
             })}
-          </div>
+          </div> */}
           <div>{renderButton()}</div>
         </div>
       </div>
@@ -141,8 +139,7 @@ export default function UserHeaderMoblie() {
               colorBorder: "rgba(255, 255, 255, 0.11)",
               padding: 0,
             },
-          }}
-        >
+          }}>
           <Collapse expandIcon={customExpandIcon} items={items} />
         </ConfigProvider>
       </nav>

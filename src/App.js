@@ -15,6 +15,7 @@ import CourseDetailPage from "./Page/User/CourseDetailPage/CourseDetailPage";
 import AddUser from "./Page/Admin/user/AddUser/AddUser";
 // import Loading from "./Components/Loading/Loading";
 import Contact from "./Page/User/Contact/Contact";
+import ComingSoon from "./Page/ComingSoon/ComingSoon";
 
 function App() {
   let info = localServices.get();
@@ -83,6 +84,10 @@ function App() {
           <Contact />
         </Layout>
       ),
+    },
+    {
+      path: "/comingSoon",
+      element: <ComingSoon />,
     },
   ];
 

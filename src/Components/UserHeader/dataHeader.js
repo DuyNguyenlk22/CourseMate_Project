@@ -7,10 +7,10 @@ export const dataHeader = {
     { navItem: "REVIEW", itemID: "review" },
   ],
   icons: [
-    { nameIcon: "fa-brands fa-facebook" },
-    { nameIcon: "fa-brands fa-twitter" },
-    { nameIcon: "fa-brands fa-youtube" },
-    { nameIcon: "fa-brands fa-instagram" },
-    { nameIcon: "fa-brands fa-linkedin" },
+    { nameIcon: "fa-brands fa-facebook", link: "facebook.com" },
+    { nameIcon: "fa-brands fa-x-twitter", link: "twitter.com" },
+    { nameIcon: "fa-brands fa-youtube", link: "youtube.com" },
+    { nameIcon: "fa-brands fa-instagram", link: "instagram.com" },
+    { nameIcon: "fa-brands fa-linkedin", link: "linkedin.com" },
   ],
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./contact.scss";
 
 export default function Contact() {
@@ -28,6 +28,9 @@ export default function Contact() {
     { placeholder: "Enter Subject*" },
     { placeholder: "Enter Number*" },
   ];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section id='contact' className='searchCourse'>
       <div className='contact__banner search__banner'>
@@ -71,8 +74,7 @@ export default function Contact() {
                         <li key={`item-${index}`}>
                           <span className='text-center mr-6'>
                             <i
-                              className={`${item.icon} w-[80px] h-[80px] leading-[80px] bg-[#41246D] text-white text-[40px] rounded-full`}
-                            ></i>
+                              className={`${item.icon} w-[80px] h-[80px] leading-[80px] bg-[#41246D] text-white text-[40px] rounded-full`}></i>
                           </span>
                           <div>
                             <h5 className='text-lg font-semibold'>
@@ -96,8 +98,7 @@ export default function Contact() {
                       return (
                         <p
                           key={`item-${index}`}
-                          className='w-full lg:w-1/2 px-[15px] mb-[30px]'
-                        >
+                          className='w-full lg:w-1/2 px-[15px] mb-[30px]'>
                           <input
                             type='input'
                             placeholder={`${item.placeholder}`}
@@ -111,8 +112,7 @@ export default function Contact() {
                         cols='30'
                         rows='10'
                         placeholder='Enter message'
-                        className='px-[12px] py-[20px] w-full bg-[#f8f8f8] rounded-2xl'
-                      ></textarea>
+                        className='px-[12px] py-[20px] w-full bg-[#f8f8f8] rounded-2xl'></textarea>
                     </p>
                     <p className='w-full px-[15px]'>
                       <button className='btnGlobal w-full font-semibold'>

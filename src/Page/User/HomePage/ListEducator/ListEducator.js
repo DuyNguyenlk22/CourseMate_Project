@@ -36,13 +36,19 @@ let renderItem = () => {
           <div className='flex justify-center mt-5'>
             <div className='flex space-x-2'>
               <div className='item__icon'>
-                <i className='fa-brands fa-facebook' />
+                <a href={"https://www.facebook.com/"} target='blank'>
+                  <i className='fa-brands fa-facebook' />
+                </a>
               </div>
               <div className='item__icon'>
-                <i className='fa-brands fa-twitter' />
+                <a href={"https://twitter.com/"} target='blank'>
+                  <i className='fa-brands fa-twitter' />
+                </a>
               </div>
               <div className='item__icon'>
-                <i className='fa-brands fa-whatsapp'></i>
+                <a href={"https://www.whatsapp.com/"} target='blank'>
+                  <i className='fa-brands fa-whatsapp'></i>
+                </a>
               </div>
             </div>
           </div>

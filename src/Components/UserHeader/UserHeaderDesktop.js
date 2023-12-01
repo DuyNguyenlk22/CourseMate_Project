@@ -38,8 +38,7 @@ export default function UserHeaderDesktop() {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            href={`#${item.itemID}`}
-          >
+            href={`#${item.itemID}`}>
             {item.navItem}
           </a>
         </li>
@@ -64,8 +63,7 @@ export default function UserHeaderDesktop() {
 
           <button
             onClick={handleLogOut}
-            className='ml-3 hover:text-[#961040] duration-300'
-          >
+            className='ml-3 hover:text-[#961040] duration-300'>
             <i className='fa-solid fa-right-from-bracket mr-2'></i>
             <span>Log Out</span>
           </button>
@@ -96,7 +94,11 @@ export default function UserHeaderDesktop() {
         <div className='iconHeader flex justify-between items-center container '>
           <div className='space-x-6'>
             {dataHeader.icons.map((item, index) => {
-              return <i key={`icon-${index}`} className={item.nameIcon} />;
+              return (
+                <a href={`https://${item.link}`} target='blank'>
+                  <i key={`icon-${index}`} className={item.nameIcon} />
+                </a>
+              );
             })}
           </div>
           <div>
@@ -105,8 +107,7 @@ export default function UserHeaderDesktop() {
                 token: {
                   colorBorder: "#f24080",
                 },
-              }}
-            >
+              }}>
               <Search
                 enterButton
                 placeholder='Search something...'

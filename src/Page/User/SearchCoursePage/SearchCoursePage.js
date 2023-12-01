@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { Rate, message } from "antd";
+import { NavLink, useParams } from "react-router-dom";
+import { Rate } from "antd";
 import "./SearchCoursePage.scss";
-import {
-  dangKyKhoaHoc,
-  layDanhSachKhoaHocTheoTen,
-} from "../../../Services/api";
-import { localServices } from "../../../Services/localServices";
-import { useSelector } from "react-redux";
+import { layDanhSachKhoaHocTheoTen } from "../../../Services/api";
 
 export default function SearchCoursePage() {
   const [listCourseByName, setListCourseByName] = useState([]);
   const [errorGetListCourse, setErrorGetListCourse] = useState("");
-  const { info } = useSelector((state) => state.userSlice);
-  const navigate = useNavigate();
 
   const param = useParams();
 
@@ -84,9 +77,7 @@ export default function SearchCoursePage() {
               </div>
               <div className='item__creator'>
                 <div className='space-x-4 mt-4 flex justify-center md:justify-end'>
-                  <NavLink
-                    to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}
-                  >
+                  <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
                     <button className='btnGlobal'>Detail</button>
                   </NavLink>
                 </div>
