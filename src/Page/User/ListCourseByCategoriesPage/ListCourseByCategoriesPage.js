@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { layKhoaHocTheoDanhMuc } from "../../../Services/api";
 import { Rate } from "antd";
-import { useSelector } from "react-redux";
 import "./ListCourseByCategoriesPage.scss";
 
 export default function ListCourseByCategoriesPage() {
-  const { info } = useSelector((state) => state.userSlice);
   const [listItem, setListItem] = useState([]);
   const navigate = useNavigate();
 
@@ -28,9 +26,8 @@ export default function ListCourseByCategoriesPage() {
       return (
         <div
           key={`item${index}`}
-          className='listCourse__item rounded-3xl hover:shadow-xl hover:-translate-y-1 h-full duration-300'
-        >
-          <NavLink to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}>
+          className='listCourse__item rounded-3xl hover:shadow-xl hover:-translate-y-1 h-full duration-300'>
+          <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
             <div className='flex flex-col justify-between h-full rounded-3xl overflow-hidden shadow'>
               <div>
                 <div className='relative '>
@@ -44,8 +41,7 @@ export default function ListCourseByCategoriesPage() {
                       (index + 1) % 2 !== 0
                         ? "nameCourse nameCourse_bg1"
                         : "nameCourse nameCourse_bg2"
-                    }
-                  >
+                    }>
                     {item.tenKhoaHoc.toUpperCase()}
                   </div>
                 </div>
@@ -89,14 +85,11 @@ export default function ListCourseByCategoriesPage() {
                   <div>
                     <i
                       className='fa-regular fa-eye mr-3'
-                      style={{ color: "#F24080" }}
-                    ></i>
+                      style={{ color: "#F24080" }}></i>
                     <span>{item.luotXem}+ students</span>
                   </div>
                   <div className='hover:text-[#961040] hover:font-semibold duration-300'>
-                    <NavLink
-                      to={info ? `/courseDetail/${item.maKhoaHoc}` : `/signIn`}
-                    >
+                    <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
                       <span className='text-xs md:text-sm'>DETAIL</span>
                       <i className='fa-solid fa-arrow-right ml-3'></i>
                     </NavLink>
@@ -131,8 +124,7 @@ export default function ListCourseByCategoriesPage() {
               }
             }}
             className='underline text-[#f24080]'
-            href='#categories'
-          >
+            href='#categories'>
             HERE
           </a>
         </div>

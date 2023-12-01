@@ -62,6 +62,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
       fetchDataCourseList();
       setIsModalEditOpen(false);
       setImgSrc(null);
+      setSelectedImg(null);
     } catch (err) {
       message.error(err.response?.data);
     }
@@ -85,13 +86,11 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
           initialValues={{
             maDanhMucKhoaHoc: "Chọn khoá học",
             maNhom: "GP09",
-          }}
-        >
+          }}>
           <Form.Item
             label='Tài khoản người tạo'
             name='taiKhoanNguoiTao'
-            className='hidden'
-          >
+            className='hidden'>
             <Input />
           </Form.Item>
           <Form.Item
@@ -103,8 +102,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Vui lòng nhập mã khoá học",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input disabled />
           </Form.Item>
           <Form.Item
@@ -116,8 +114,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Please input sub-name",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -128,8 +125,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 required: true,
                 message: "Please rate this course",
               },
-            ]}
-          >
+            ]}>
             <Input type='number' />
           </Form.Item>
           <Form.Item
@@ -141,8 +137,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Please input course name",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -153,8 +148,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 required: true,
                 message: "Please input view",
               },
-            ]}
-          >
+            ]}>
             <Input type='number' />
           </Form.Item>
           <Form.Item
@@ -166,16 +160,15 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Please choose categories",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Select
               options={[
-                { value: "BackEnd", label: "BackEnd", },
-                { value: "Design", label: "Design", },
-                { value: "DiDong", label: "DiDong", },
-                { value: "FrontEnd", label: "FrontEnd", },
-                { value: "FullStack", label: "FullStack", },
-                { value: "TuDuy", label: "TuDuy", },
+                { value: "BackEnd", label: "BackEnd" },
+                { value: "Design", label: "Design" },
+                { value: "DiDong", label: "DiDong" },
+                { value: "FrontEnd", label: "FrontEnd" },
+                { value: "FullStack", label: "FullStack" },
+                { value: "TuDuy", label: "TuDuy" },
               ]}
             />
           </Form.Item>
@@ -189,8 +182,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Vui lòng không bỏ trống",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -202,8 +194,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 message: "Please input your describe",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input.TextArea />
           </Form.Item>
           <Form.Item
@@ -214,8 +205,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
                 required: true,
                 message: "Please input date",
               },
-            ]}
-          >
+            ]}>
             <DatePicker format={"DD/MM/YYYY"} />
           </Form.Item>
           <Form.Item label='Mã nhóm' name='maNhom' className='hidden'>
@@ -238,8 +228,7 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
             <button
               size='large'
               className='btnGlobal duration-300 text-white'
-              htmlType='submit'
-            >
+              htmlType='submit'>
               Update
             </button>
           </div>

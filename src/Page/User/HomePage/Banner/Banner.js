@@ -1,5 +1,6 @@
 import React from "react";
 import "./Banner.scss";
+import { NavLink } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -15,7 +16,9 @@ export default function Banner() {
               deserunt convallis. Inceptos per consectetur consequatur proin.
             </p>
           </div>
-          <button className='btnGlobal'>LEARN MORE</button>
+          <NavLink to={"/comingSoon"}>
+            <button className='btnGlobal'>LEARN MORE</button>
+          </NavLink>
         </div>
         <div className='right__banner'>
           <div className='img_overlayOval overlay2 w-1/2'></div>

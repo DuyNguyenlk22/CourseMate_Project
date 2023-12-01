@@ -1,0 +1,60 @@
+#commingSoon {
+    color: white;
+    .commingSoon__bg {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-image: url("../../../public/image/aboutUs/about_2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        .overlay_purpil {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #41246d;
+            opacity: 0.8;
+            z-index: 1;
+        }
+    }
+    .comingSoon__listNumber {
+        .number__item {
+            display: flex;
+            justify-content: center;
+            background-color: #f24080;
+            padding: 25px 45px;
+            border-radius: 25px;
+            margin: 15px;
+            .item__wrap {
+                text-align: center;
+                p {
+                    font-size: 55px;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+    .comingSoon__footer {
+        .item__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            border: 1px solid white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.5s;
+            &:hover {
+                background-color: #961040;
+                border: 1px solid #961040;
+            }
+        }
+    }
+}

@@ -3,10 +3,10 @@ import "./UserFooter.scss";
 import { NavLink } from "react-router-dom";
 
 let icons = [
-  { name: "fa-brands fa-facebook" },
-  { name: "fa-brands fa-twitter" },
-  { name: "fa-brands fa-youtube" },
-  { name: "fa-brands fa-instagram" },
+  { name: "fa-brands fa-facebook", href: "https://facebook.com" },
+  { name: "fa-brands fa-x-twitter", href: "https://twitter.com" },
+  { name: "fa-brands fa-youtube", href: "https://youtube.com" },
+  { name: "fa-brands fa-instagram", href: "https://instagram.com" },
 ];
 let listItem = {
   listItemCol2: [
@@ -38,7 +38,9 @@ export default function UserFooter() {
               {icons.map((item, index) => {
                 return (
                   <div className='item_icon cursor-pointer' key={index}>
-                    <i className={item.name} />
+                    <a href={item.href} target='blank'>
+                      <i className={item.name} />
+                    </a>
                   </div>
                 );
               })}
@@ -50,7 +52,7 @@ export default function UserFooter() {
               {listItem.listItemCol2.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink>{item.title}</NavLink>
+                    <NavLink to={"/comingSoon"}>{item.title}</NavLink>
                   </li>
                 );
               })}
@@ -62,7 +64,7 @@ export default function UserFooter() {
               {listItem.listItemCol3.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink>{item.title}</NavLink>
+                    <NavLink to={"/*"}>{item.title}</NavLink>
                   </li>
                 );
               })}

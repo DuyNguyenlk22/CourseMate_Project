@@ -73,13 +73,8 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
           className='w-[80%]'
           initialValues={{
             maDanhMucKhoaHoc: " ",
-          }}
-        >
-          <Form.Item
-            label='Account'
-            name='taiKhoanNguoiTao'
-            className='hidden'
-          >
+          }}>
+          <Form.Item label='Account' name='taiKhoanNguoiTao' className='hidden'>
             <Input />
           </Form.Item>
           <Form.Item className='hidden' label='Course Id' name='maKhoaHoc'>
@@ -94,8 +89,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 message: "Please input sub-name",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -107,8 +101,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 message: "Please rate this course",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input type='number' />
           </Form.Item>
           <Form.Item
@@ -120,8 +113,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 message: "Please input course name",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -132,8 +124,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 required: true,
                 message: "Please input view",
               },
-            ]}
-          >
+            ]}>
             <Input type='number' />
           </Form.Item>
           <Form.Item
@@ -145,17 +136,16 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 message: "Please choose categories",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Select
               options={[
-                { label: "Choose Categories", disabled: true, },
-                { value: "BackEnd", label: "BackEnd", },
-                { value: "Design", label: "Design", },
-                { value: "DiDong", label: "DiDong", },
-                { value: "FrontEnd", label: "FrontEnd", },
-                { value: "FullStack", label: "FullStack", },
-                { value: "TuDuy", label: "TuDuy", },
+                { label: "Choose Categories", disabled: true },
+                { value: "BackEnd", label: "BackEnd" },
+                { value: "Design", label: "Design" },
+                { value: "DiDong", label: "DiDong" },
+                { value: "FrontEnd", label: "FrontEnd" },
+                { value: "FullStack", label: "FullStack" },
+                { value: "TuDuy", label: "TuDuy" },
               ]}
             />
           </Form.Item>
@@ -171,8 +161,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 message: "Please input your describe",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input.TextArea />
           </Form.Item>
           <Form.Item label='Creation date' name='ngayTao' className='hidden'>
@@ -184,21 +173,21 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
                 width: 120,
               }}
               options={[
-                { value: "GP01", label: "GP01", },
-                { value: "GP02", label: "GP02", },
-                { value: "GP03", label: "GP03", },
-                { value: "GP04", label: "GP04", },
-                { value: "GP05", label: "GP05", },
-                { value: "GP06", label: "GP06", },
-                { value: "GP07", label: "GP07", },
-                { value: "GP08", label: "GP08", },
-                { value: "GP09", label: "GP09", },
-                { value: "GP10", label: "GP10", },
-                { value: "GP11", label: "GP11", },
-                { value: "GP12", label: "GP12", },
-                { value: "GP13", label: "GP13", },
-                { value: "GP14", label: "GP14", },
-                { value: "GP15", label: "GP15", },
+                { value: "GP01", label: "GP01" },
+                { value: "GP02", label: "GP02" },
+                { value: "GP03", label: "GP03" },
+                { value: "GP04", label: "GP04" },
+                { value: "GP05", label: "GP05" },
+                { value: "GP06", label: "GP06" },
+                { value: "GP07", label: "GP07" },
+                { value: "GP08", label: "GP08" },
+                { value: "GP09", label: "GP09" },
+                { value: "GP10", label: "GP10" },
+                { value: "GP11", label: "GP11" },
+                { value: "GP12", label: "GP12" },
+                { value: "GP13", label: "GP13" },
+                { value: "GP14", label: "GP14" },
+                { value: "GP15", label: "GP15" },
               ]}
             />
           </Form.Item>
@@ -214,8 +203,7 @@ export default function FormAdd({ form, setIsModalOpen, fetchDataCourseList }) {
             <button
               size={"large"}
               className='btnGlobal duration-300 text-white'
-              htmlType='submit'
-            >
+              htmlType='submit'>
               Add Course
             </button>
           </div>

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Table, Tag, message, ConfigProvider, Form, } from "antd";
+import { Modal, Table, Tag, message, ConfigProvider, Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, fetchList, searchUser, } from "../../../../Redux/listUserSlice/listUserSlice";
+import {
+  deleteUser,
+  fetchList,
+  searchUser,
+} from "../../../../Redux/listUserSlice/listUserSlice";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import FormEnrollment from "./FormEnrollment";
 import { setTaiKhoan } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
@@ -11,17 +15,21 @@ import Search from "antd/es/input/Search";
 
 export default function TableUser() {
   const columns = [
-    { title: "#", dataIndex: "stt", key: "stt", },
-    { title: "Username", dataIndex: "taiKhoan", key: "taiKhoan", },
-    { title: "Name", dataIndex: "hoTen", key: "hoTen", },
-    { title: "Email", dataIndex: "email", key: "email", },
-    { title: "Phone Number", dataIndex: "soDt", key: "soDt", },
+    { title: "#", dataIndex: "stt", key: "stt" },
+    { title: "Username", dataIndex: "taiKhoan", key: "taiKhoan" },
+    { title: "Name", dataIndex: "hoTen", key: "hoTen" },
+    { title: "Email", dataIndex: "email", key: "email" },
+    { title: "Phone Number", dataIndex: "soDt", key: "soDt" },
     {
-      title: "Type", dataIndex: "maLoaiNguoiDung", key: "maLoaiNguoiDung",
+      title: "Type",
+      dataIndex: "maLoaiNguoiDung",
+      key: "maLoaiNguoiDung",
       render: (text) => {
         if (text === "HV") {
           return <Tag color='green'>Học Viên</Tag>;
-        } else { return <Tag color='red'>Giáo Viên</Tag>; }
+        } else {
+          return <Tag color='red'>Giáo Viên</Tag>;
+        }
       },
     },
     {
@@ -34,15 +42,13 @@ export default function TableUser() {
               onClick={() => {
                 showModalEdit(user);
               }}
-              className='text-2xl text-yellow-400 hover:text-yellow-500 duration-300'
-            >
+              className='text-2xl text-yellow-400 hover:text-yellow-500 duration-300'>
               <i className='fa-solid fa-pen-to-square'></i>
             </button>
             <button
               title='Delete'
               onClick={() => handleDelete(user.taiKhoan)}
-              className='text-2xl text-red-600 hover:text-red-700 duration-300'
-            >
+              className='text-2xl text-red-600 hover:text-red-700 duration-300'>
               <i className='fa-solid fa-square-xmark '></i>
             </button>
             <button
@@ -50,8 +56,7 @@ export default function TableUser() {
               onClick={() => {
                 showModalEnroll(user);
               }}
-              className='text-2xl text-green-400 hover:text-green-500 duration-300'
-            >
+              className='text-2xl text-green-400 hover:text-green-500 duration-300'>
               <i className='fa-solid fa-user-check'></i>
             </button>
           </div>
@@ -133,26 +138,22 @@ export default function TableUser() {
           footer={null}
           centered
           width={"60%"}
-          style={{ margin: '20px' }}
+          style={{ margin: "20px" }}
           closeIcon={false}
           okType={"default"}
           open={isModalEnrollOpen}
-          onCancel={handleCancelEroll}
-
-        >
+          onCancel={handleCancelEroll}>
           <FormEnrollment user={user} />
         </Modal>
       </div>
 
       <ConfigProvider
-        theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
-      >
+        theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}>
         <button
           onClick={showModalAdd}
           type='default'
-          className='flex items-center btnGlobal duration-300'
-        >
-          <PlusCircleOutlined className="mr-2" /> Add New User
+          className='flex items-center btnGlobal duration-300'>
+          <PlusCircleOutlined className='mr-2' /> Add New User
         </button>
       </ConfigProvider>
 
@@ -164,8 +165,7 @@ export default function TableUser() {
           closeIcon={false}
           okType={"default"}
           open={isModalAddOpen}
-          onCancel={handleCancelAdd}
-        >
+          onCancel={handleCancelAdd}>
           <AddUser form={form} setIsModalAddOpen={setIsModalAddOpen} />
         </Modal>
       </div>
@@ -177,8 +177,7 @@ export default function TableUser() {
           closeIcon={false}
           okType={"default"}
           open={isModalEditOpen}
-          onCancel={handleCancelEdit}
-        >
+          onCancel={handleCancelEdit}>
           <EditUser
             infoUser={infoUser}
             form={form}

@@ -1,6 +1,7 @@
 import { Progress } from "antd";
 import React, { Fragment } from "react";
 import "./AboutUs.scss";
+import { NavLink } from "react-router-dom";
 
 let data = [
   { title: "Completed Projects", percent: "92%", number: 92 },
@@ -62,7 +63,9 @@ export default function AboutUs() {
             </div>
           </div>
           <div className='mt-10'>
-            <button className='btnGlobal font-bold'>MORE ABOUT US</button>
+            <NavLink to={"/comingSoon"}>
+              <button className='btnGlobal font-bold'>MORE ABOUT US</button>
+            </NavLink>
           </div>
         </div>
         <div className='aboutUs__right flex flex-col justify-around'>

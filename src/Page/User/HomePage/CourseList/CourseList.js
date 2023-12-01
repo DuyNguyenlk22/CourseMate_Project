@@ -24,7 +24,7 @@ export default function CourseList() {
     getCourseList();
   }, []);
   let renderCourseItem = () => {
-    return courseList?.slice(3, 9).map((item, index) => {
+    return courseList?.slice(16, 30).map((item, index) => {
       return (
         <SwiperSlide key={`couseItem${index}`}>
           <div className=' p-5 '>
@@ -41,8 +41,7 @@ export default function CourseList() {
                       (index + 1) % 2 !== 0
                         ? "nameCourse nameCourse_bg1"
                         : "nameCourse nameCourse_bg2"
-                    }
-                  >
+                    }>
                     {item.tenKhoaHoc}
                   </div>
                 </div>
@@ -85,8 +84,7 @@ export default function CourseList() {
                   <div>
                     <i
                       className='fa-regular fa-eye mr-1 lg:mr-3'
-                      style={{ color: "#F24080" }}
-                    ></i>
+                      style={{ color: "#F24080" }}></i>
                     <span>{item.luotXem}+ students</span>
                   </div>
                   <div className='hover:text-[#961040] hover:font-semibold duration-300'>
@@ -138,8 +136,7 @@ export default function CourseList() {
                   slidesPerView: 3,
                   spaceBetween: 50,
                 },
-              }}
-            >
+              }}>
               {renderCourseItem()}
             </Swiper>
           </div>

@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  message,
-  Image,
-  Tag,
-  ConfigProvider,
-  Table,
-  Modal,
-} from "antd";
+import { message, Image, Tag, ConfigProvider, Table, Modal } from "antd";
 
 import Search from "antd/es/input/Search";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -120,10 +113,28 @@ export default function CourseManagement({
     { title: "Name", dataIndex: "courseName", key: "courseName" },
     { title: "Type", dataIndex: "courseType", key: "courseType" },
     { title: "Description", dataIndex: "description", key: "description" },
-    { title: "Create Date", dataIndex: "dateCreate", key: "dateCreate", sorter: (a, b) => a.dateCreate - b.dateCreate, },
-    { title: "Attendees Amount", dataIndex: "courseAttendees", key: "courseAttendees", },
-    { title: "Course Views", dataIndex: "courseViews", key: "courseViews", sorter: (a, b) => a.courseViews - b.courseViews, },
-    { title: "Create Account", dataIndex: "createAccount", key: "createAccount", },
+    {
+      title: "Create Date",
+      dataIndex: "dateCreate",
+      key: "dateCreate",
+      sorter: (a, b) => a.dateCreate - b.dateCreate,
+    },
+    {
+      title: "Attendees Amount",
+      dataIndex: "courseAttendees",
+      key: "courseAttendees",
+    },
+    {
+      title: "Course Views",
+      dataIndex: "courseViews",
+      key: "courseViews",
+      sorter: (a, b) => a.courseViews - b.courseViews,
+    },
+    {
+      title: "Create Account",
+      dataIndex: "createAccount",
+      key: "createAccount",
+    },
     { title: "Actions", dataIndex: "actions", key: "actions" },
   ];
   const courseData = [];
@@ -134,9 +145,13 @@ export default function CourseManagement({
     let dataRow = {
       ordinal: index + 1,
       image: <Image width={50} height={80} src={course.hinhAnh} alt='' />,
-      courseName: `${course.tenKhoaHoc.substring(0, 30)}${course.tenKhoaHoc.length > 30 ? "..." : ""}`,
+      courseName: `${course.tenKhoaHoc.substring(0, 30)}${
+        course.tenKhoaHoc.length > 30 ? "..." : ""
+      }`,
       courseType: <Tag color={tagColor}>{maDanhMucKhoahoc}</Tag>,
-      description: `${course.moTa.substring(0, 200)}${course.moTa.length > 200 ? "..." : ""}`,
+      description: `${course.moTa.substring(0, 200)}${
+        course.moTa.length > 200 ? "..." : ""
+      }`,
       dateCreate: course.ngayTao,
       courseAttendees: course.soLuongHocVien,
       courseViews: course.luotXem,
@@ -145,29 +160,35 @@ export default function CourseManagement({
         <div className='flex align-middle justify-center'>
           <button
             className='h-11 w-10 text-2xl border-none font-extrabold text-yellow-500 hover:text-yellow-600 flex align-middle justify-center'
-            onClick={() => { showModalEdit(course.maKhoaHoc); }}
-            title={"Fix This Course"}
-          >
+            onClick={() => {
+              showModalEdit(course.maKhoaHoc);
+            }}
+            title={"Fix This Course"}>
             <i className='fa-solid fa-pen-to-square'></i>
           </button>
 
           <button
             className='h-11 w-10 text-2xl border-none font-extrabold text-red-500 hover:text-red-700 mx-1 flex align-middle justify-center'
-            onClick={() => { handleDeleteCourse(course.maKhoaHoc); }}
-            title={"Delete This Course"}
-          >
+            onClick={() => {
+              handleDeleteCourse(course.maKhoaHoc);
+            }}
+            title={"Delete This Course"}>
             <i className='fa-solid fa-square-xmark '></i>
           </button>
 
-          <button className='h-11 w-10 text-2xl border-none font-extrabold text-green-500 hover:text-green-700 flex align-middle justify-center'
-            onClick={() => { handleMoveToEnrollment(course.maKhoaHoc) }}
-            title={'Move to All Enrollment of this Course'}
-          ><i className="fa-regular fa-calendar"></i></button>
-        </div>)
-    }
+          <button
+            className='h-11 w-10 text-2xl border-none font-extrabold text-green-500 hover:text-green-700 flex align-middle justify-center'
+            onClick={() => {
+              handleMoveToEnrollment(course.maKhoaHoc);
+            }}
+            title={"Move to All Enrollment of this Course"}>
+            <i className='fa-regular fa-calendar'></i>
+          </button>
+        </div>
+      ),
+    };
     courseData.push(dataRow);
   });
-
 
   useEffect(() => {
     fetchDataCourseList();
@@ -178,8 +199,7 @@ export default function CourseManagement({
     <div>
       <div className='text-right mb-2'>
         <ConfigProvider
-          theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}
-        >
+          theme={{ token: { colorPrimary: "white", borderRadius: 10 } }}>
           <AddCoursePopup fetchDataCourseList={fetchDataCourseList} />
         </ConfigProvider>
       </div>
@@ -190,8 +210,7 @@ export default function CourseManagement({
           centered
           open={isModalEditOpen}
           closeIcon={false}
-          onCancel={handleCancel}
-        >
+          onCancel={handleCancel}>
           <FormEdit
             setIsModalEditOpen={setIsModalEditOpen}
             fetchDataCourseList={fetchDataCourseList}
@@ -208,14 +227,14 @@ export default function CourseManagement({
           title={"Search Data about Courses"}
         />
         <button
-          className={`btn border w-32 rounded-xl border-pink-600 text-pink-500 font-bold ml-3 h-10 ${isSearch ? "block" : "hidden"
-            }`}
+          className={`btn border w-32 rounded-xl border-pink-600 text-pink-500 font-bold ml-3 h-10 ${
+            isSearch ? "block" : "hidden"
+          }`}
           onClick={() => {
             handleSearchCancel();
           }}
-          title={"Search Data about Courses"}
-        >
-          Cancle Search
+          title={"Search Data about Courses"}>
+          Cancel Search
         </button>
       </div>
       <Table bordered columns={tableColumns} dataSource={courseData} />
