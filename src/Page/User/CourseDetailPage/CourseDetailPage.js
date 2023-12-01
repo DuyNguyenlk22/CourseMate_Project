@@ -228,7 +228,7 @@ export default function CourseDetailPage() {
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-clock"></i>Time Duration : 12 weeks</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-book-open-reader"></i>Study Lecture : 24 Lectures</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-bars"></i>Skill Level : Advance Course</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-people-group"></i>Nu. Of Students : {courseDetail.soLuongHocVien} Students</li>
+                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-people-group"></i>Nu. Of Students : {courseDetail?.soLuongHocVien} Students</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-star"></i>Pass Percentage : 90%</li>
                   <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-graduation-cap"></i>Certificate : Yes</li>
                 </ul>
@@ -301,12 +301,12 @@ export default function CourseDetailPage() {
               <div className='title grid lg:grid-cols-9 md:grid-cols-4 grid-cols-1 lg:gap-2 gap-2 mb-5'>
                 <div className='course_item flex lg:col-span-3 mx-5 lg:m-0 md:border-r-2 border-pink-300 md:col-span-2'>
                   <img
-                    src={`https://i.pravatar.cc/150?u=${courseDetail.nguoiTao.hoTen}`}
+                    src={`https://i.pravatar.cc/150?u=${courseDetail?.nguoiTao.hoTen}`}
                     className='w-12 rounded-full'
                     alt='...'
                   />
                   <div className="teacher ml-4">
-                    <p className='font-bold'>{courseDetail.nguoiTao.hoTen}</p>
+                    <p className='font-bold'>{courseDetail?.nguoiTao.hoTen}</p>
                     <span>Chief Instructor</span>
                   </div>
                   <Tag
