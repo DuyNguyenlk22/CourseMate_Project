@@ -9,13 +9,14 @@
             color: #d9d9d9;
             font-size: 0.93rem;
             line-height: 1;
+
             .iconHeader__left {
                 i {
                     cursor: pointer;
                     transition: all 0.5s;
 
                     &:hover {
-                        color: #961040;
+                        color: #f24080;
                     }
                 }
             }
@@ -42,8 +43,9 @@
                 a {
                     font-weight: 600;
                     transition: all 0.5s;
+
                     &:hover {
-                        color: #961040;
+                        color: #f24080;
                     }
                 }
             }
@@ -64,8 +66,10 @@
         }
     }
 }
-.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
+
+.ant-input-search>.ant-input-group>.ant-input-group-addon:last-child {
     background-color: #f24080;
+
     button {
         &:hover {
             background-color: #961040;
@@ -89,22 +93,27 @@
         color: white;
         border-bottom: 1px solid rgba(255, 255, 255, 0.11);
     }
-    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+
+    .ant-collapse>.ant-collapse-item>.ant-collapse-header {
         color: white;
         justify-content: center;
         align-items: center;
     }
-    .ant-collapse > .ant-collapse-item > .ant-collapse-header > .ant-collapse-header-text {
+
+    .ant-collapse>.ant-collapse-item>.ant-collapse-header>.ant-collapse-header-text {
         margin-inline-end: 0;
         flex: none;
     }
-    .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+
+    .ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-arrow {
         font-size: 20px;
     }
+
     .menuList {
         li {
             border-bottom: 1px solid #e6e6e6;
             padding: 10px;
+
             a {
                 font-weight: 700;
                 transition: all 0.5s;

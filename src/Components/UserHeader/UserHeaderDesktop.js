@@ -29,7 +29,7 @@ export default function UserHeaderDesktop() {
   let renderNavItem = () => {
     return dataHeader.items.map((item, index) => {
       return (
-        <li key={`item${index}`}>
+        <li key={`item${index}`} className="hover:text-[#f24080]">
           <a
             onClick={() => {
               navigate(`/`);
