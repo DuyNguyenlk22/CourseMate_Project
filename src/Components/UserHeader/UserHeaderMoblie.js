@@ -108,8 +108,8 @@ export default function UserHeaderMoblie() {
         <div className='container flex justify-between item-center py-3'>
           <div className='hover:animate-pulse duration-300'>
             <NavLink to={"/"} className='flex items-center'>
-              <i className='fa-solid fa-graduation-cap font-extrabold text-4xl'></i>
-              <span className='text-xl font-extrabold'>CourseMate</span>
+              <i className='fa-solid fa-graduation-cap font-extrabold text-2xl'></i>
+              <span className='text-lg font-extrabold'>CourseMate</span>
             </NavLink>
           </div>
           <div className='flex items-center searchBar'>
