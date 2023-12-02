@@ -21,6 +21,7 @@ export default function ListCourseByCategoriesPage() {
     };
     getListCourseByCategories();
   }, [maDanhMuc]);
+
   let renderListCourseItem = () => {
     return listItem?.map((item, index) => {
       return (
@@ -102,6 +103,7 @@ export default function ListCourseByCategoriesPage() {
       );
     });
   };
+  
   return (
     <div className='listCourseByCateGories py-20 bg-[#f8f8f8]'>
       <div className='container'>

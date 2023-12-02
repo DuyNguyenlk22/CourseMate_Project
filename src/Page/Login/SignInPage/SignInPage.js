@@ -44,7 +44,6 @@ export default function SignInPage() {
     let logIn = async () => {
       try {
         let res = await dangNhap(values);
-        console.log("res: ", res);
         if (res.data.maLoaiNguoiDung === 'HV' && isUserLogin || res.data.maLoaiNguoiDung === 'GV' && !isUserLogin) {
           dispatch(setInfo(res.data));
           localServices.set(res.data);

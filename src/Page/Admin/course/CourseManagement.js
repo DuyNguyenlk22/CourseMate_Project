@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { message, Image, Tag, ConfigProvider, Table, Modal } from "antd";
-
 import Search from "antd/es/input/Search";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import dayjs from "dayjs";
-import {
-  layDanhSachKhoaHoc,
-  layDanhSachKhoaHocTheoTen,
-  xoaKhoaHoc,
-  layThongTinKhoaHoc,
-} from "../../../Services/api";
+import { layDanhSachKhoaHoc, layDanhSachKhoaHocTheoTen, xoaKhoaHoc, layThongTinKhoaHoc, } from "../../../Services/api";
 import AddCoursePopup from "./AddCoursePopup/AddCoursePopup";
 import FormEdit from "./EditCoursePopup/FormEdit";
 import { setInfoCourse } from "../../../Redux/popupEditModal/popupEditModal";
 
-export default function CourseManagement({
-  setSelectedItem,
-  setSelectedCourse,
-}) {
+export default function CourseManagement({ setSelectedItem, setSelectedCourse, }) {
   dayjs.extend(customParseFormat);
   const dispatch = useDispatch();
 
@@ -55,8 +46,6 @@ export default function CourseManagement({
       )
         return;
       let response = await layDanhSachKhoaHocTheoTen(searchValue);
-      console.log("searchValue: ", searchValue);
-      console.log("response: ", response);
       setCourseSearchList(response.data);
       setIsSearch(true);
       message.success(
@@ -145,13 +134,11 @@ export default function CourseManagement({
     let dataRow = {
       ordinal: index + 1,
       image: <Image width={50} height={80} src={course.hinhAnh} alt='' />,
-      courseName: `${course.tenKhoaHoc.substring(0, 30)}${
-        course.tenKhoaHoc.length > 30 ? "..." : ""
-      }`,
+      courseName: `${course.tenKhoaHoc.substring(0, 30)}${course.tenKhoaHoc.length > 30 ? "..." : ""
+        }`,
       courseType: <Tag color={tagColor}>{maDanhMucKhoahoc}</Tag>,
-      description: `${course.moTa.substring(0, 200)}${
-        course.moTa.length > 200 ? "..." : ""
-      }`,
+      description: `${course.moTa.substring(0, 200)}${course.moTa.length > 200 ? "..." : ""
+        }`,
       dateCreate: course.ngayTao,
       courseAttendees: course.soLuongHocVien,
       courseViews: course.luotXem,
@@ -227,9 +214,8 @@ export default function CourseManagement({
           title={"Search Data about Courses"}
         />
         <button
-          className={`btn border w-32 rounded-xl border-pink-600 text-pink-500 font-bold ml-3 h-10 ${
-            isSearch ? "block" : "hidden"
-          }`}
+          className={`btn border w-32 rounded-xl border-pink-600 text-pink-500 font-bold ml-3 h-10 ${isSearch ? "block" : "hidden"
+            }`}
           onClick={() => {
             handleSearchCancel();
           }}

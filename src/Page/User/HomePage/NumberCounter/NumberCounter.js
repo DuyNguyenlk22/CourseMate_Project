@@ -4,6 +4,7 @@ import { ConfigProvider, Modal } from "antd";
 import CountUp from "react-countup";
 import ReactPlayer from "react-player";
 import { CloseOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 
 export default function NumberCounter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,7 +74,9 @@ export default function NumberCounter() {
                 deserunt convallis, eius.
               </p>
               <div>
-                <button className='btnGlobal '>JOIN US NOW</button>
+                <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
+                  <button className='btnGlobal '>JOIN US NOW</button>
+                </NavLink>
               </div>
             </div>
             <div className='overlay'></div>

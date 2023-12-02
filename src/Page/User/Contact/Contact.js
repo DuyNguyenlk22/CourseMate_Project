@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./contact.scss";
+import { message } from "antd";
 
 export default function Contact() {
   let itemsLeft = [
@@ -115,7 +116,7 @@ export default function Contact() {
                         className='px-[12px] py-[20px] w-full bg-[#f8f8f8] rounded-2xl'></textarea>
                     </p>
                     <p className='w-full px-[15px]'>
-                      <button className='btnGlobal w-full font-semibold'>
+                      <button className='btnGlobal w-full font-semibold' onClick={() => { message.success('Thanks for your infomation, we will call to support you as soon as posible') }}>
                         Submit now
                       </button>
                     </p>

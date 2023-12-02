@@ -4,13 +4,10 @@ import { NavLink } from "react-router-dom";
 import Countdown from "react-countdown";
 
 export default function ComingSoon() {
-  // Renderer callback with condition
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      // Render a completed state
       return "Have a good experience";
     } else {
-      // Render a countdown
       return (
         <div className='flex justify-center flex-wrap md:flex-nowrap'>
           <div className='number__item'>
@@ -65,11 +62,9 @@ export default function ComingSoon() {
                 Something awesome is in the works
               </p>
             </div>
-            {/* <div className='flex justify-center'> */}
             <div className='comingSoon__listNumber mb-10 md:mb-16'>
               <Countdown date={Date.now() + 1701413929} renderer={renderer} />
             </div>
-            {/* </div> */}
             <div className='comingSoon__footer flex justify-center md:justify-between items-center flex-wrap md:flex-nowrap px-8 mb-5'>
               <div className='mr-5 md:mr-0 lg:space-x-8 space-y-3 md:space-y-0'>
                 <span className='lg:inline-block block'>

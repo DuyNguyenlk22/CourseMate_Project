@@ -11,10 +11,6 @@ export default function CourseDetailPage() {
   let [courseDetail, setCourseDetail] = useState();
   const { info } = useSelector((state) => state.userSlice);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   let fakeData = [
     {
       key: "1",
@@ -190,6 +186,7 @@ export default function CourseDetailPage() {
     }
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchDataCourseDetail = async () => {
       try {
         const response = await layThongTinKhoaHoc(maKhoaHoc);
@@ -199,7 +196,7 @@ export default function CourseDetailPage() {
       }
     };
     fetchDataCourseDetail();
-  }, []);
+  }, [maKhoaHoc]);
 
   return (
     <section>
@@ -222,13 +219,35 @@ export default function CourseDetailPage() {
                   />
                 </div>
                 <ul className='ml-5'>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-clock"></i>Name : {courseDetail?.tenKhoaHoc ? courseDetail.tenKhoaHoc : ''}</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-clock"></i>Time Duration : 12 weeks</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-book-open-reader"></i>Study Lecture : 24 Lectures</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-bars"></i>Skill Level : Advance Course</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-people-group"></i>Nu. Of Students : {courseDetail?.soLuongHocVien} Students</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-star"></i>Pass Percentage : 90%</li>
-                  <li><i className="mr-3 py-3 text-pink-500 fa-solid fa-graduation-cap"></i>Certificate : Yes</li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-clock'></i>
+                    Name :{" "}
+                    {courseDetail?.tenKhoaHoc ? courseDetail.tenKhoaHoc : ""}
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-clock'></i>
+                    Time Duration : 12 weeks
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-book-open-reader'></i>
+                    Study Lecture : 24 Lectures
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-bars'></i>
+                    Skill Level : Advance Course
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-people-group'></i>
+                    Nu. Of Students : {courseDetail?.soLuongHocVien} Students
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-star'></i>
+                    Pass Percentage : 90%
+                  </li>
+                  <li>
+                    <i className='mr-3 py-3 text-pink-500 fa-solid fa-graduation-cap'></i>
+                    Certificate : Yes
+                  </li>
                 </ul>
                 <div className='text-center my-5 px-10'>
                   <button
@@ -303,7 +322,7 @@ export default function CourseDetailPage() {
                     className='w-12 rounded-full'
                     alt='...'
                   />
-                  <div className="teacher ml-4">
+                  <div className='teacher ml-4'>
                     <p className='font-bold'>{courseDetail?.nguoiTao.hoTen}</p>
                     <span>Chief Instructor</span>
                   </div>

@@ -1,9 +1,6 @@
 import { Checkbox, ConfigProvider, Pagination, Rate } from "antd";
 import React, { useEffect, useState } from "react";
-import {
-  layDanhSachKhoaHoc,
-  layDanhSachKhoaHoc_PhanTrang,
-} from "../../../Services/api";
+import { layDanhSachKhoaHoc, layDanhSachKhoaHoc_PhanTrang, } from "../../../Services/api";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./AllCoursePage.scss";
@@ -128,9 +125,7 @@ export default function AllCoursePage() {
       });
     }
   };
-  const onChange = (e) => {
-    setSelectedItems(e);
-  };
+  const onChange = (e) => { setSelectedItems(e); };
 
   return (
     <section className='allCoursePage py-10 bg-[#f8f8f8]'>
@@ -171,9 +166,8 @@ export default function AllCoursePage() {
               {renderItemPage()}
             </div>
             <div
-              className={`flex justify-center mt-8 ${
-                selectedItems?.length !== 0 ? "hidden" : "block"
-              }`}
+              className={`flex justify-center mt-8 ${selectedItems?.length !== 0 ? "hidden" : "block"
+                }`}
             >
               <Pagination
                 current={page}

@@ -8,22 +8,8 @@ export default function PersonalInfo({ userDetail }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const formItemLayout = {
-    labelCol: {
-      xs: {
-        span: 8,
-      },
-      sm: {
-        span: 6,
-      },
-    },
-    wrapperCol: {
-      xs: {
-        span: 48,
-      },
-      sm: {
-        span: 24,
-      },
-    },
+    labelCol: { xs: { span: 8, }, sm: { span: 6, }, },
+    wrapperCol: { xs: { span: 48, }, sm: { span: 24, }, },
   };
   useEffect(() => {
     if (userDetail !== null) {
@@ -62,18 +48,6 @@ export default function PersonalInfo({ userDetail }) {
     fetchData(values);
   }
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className=' bg-purple-100 border shadow-lg rounded-lg my-10'>
       <div className="text-center py-5">
@@ -111,13 +85,13 @@ export default function PersonalInfo({ userDetail }) {
         </div>
       </div>
       <div className="text-center lg:m-10 m-5">
-        <button className='btnGlobal' onClick={showModal}>
+        <button className='btnGlobal' onClick={setIsModalOpen(true)}>
           Update
         </button>
       </div>
       <Modal
         className='bg-white rounded-2xl text-center overflow-hidden pb-0 lg:max-w-4xl min-w-max lg:min-w-1/2'
-        open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        open={isModalOpen} onOk={setIsModalOpen(false)} onCancel={setIsModalOpen(false)}>
         <h1 className='lg:text-3xl text-xl font-bold pt-5'>User Infomation</h1>
         <Form
           theme={'dark'}
