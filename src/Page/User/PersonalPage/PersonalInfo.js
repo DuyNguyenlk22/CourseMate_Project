@@ -136,7 +136,7 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert your account',
+                message: 'Please enter your account',
                 whitespace: true,
               },
             ]}
@@ -148,7 +148,7 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert your password!',
+                message: 'Please enter your password!',
               },
             ]}
             hasFeedback
@@ -160,8 +160,12 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert Your Phone Number!',
+                message: 'Please enter Your Phone Number!',
                 whitespace: true,
+              },
+              {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid phone number!',
               },
             ]}>
             <Input />
@@ -172,7 +176,7 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert Group Code!',
+                message: 'Please enter Group Code!',
                 whitespace: true,
               },
             ]}>
@@ -184,7 +188,7 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert User Type!',
+                message: 'Please enter User Type!',
                 whitespace: true,
               },
             ]}>
@@ -195,8 +199,12 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 required: true,
-                message: 'Insert Your Fullname!',
+                message: 'Please enter Your Fullname!',
                 whitespace: true,
+              },
+              {
+                pattern: /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+                message: 'Please enter a valid name!',
               },
             ]}>
             <Input />
@@ -206,11 +214,11 @@ export default function PersonalInfo({ userDetail }) {
             rules={[
               {
                 type: 'email',
-                message: 'The input is not valid E-mail!',
+                message: 'Please enter a valid E-mail!',
               },
               {
                 required: true,
-                message: 'Please input your E-mail!',
+                message: 'Please enter your E-mail!',
               },
             ]}
           >

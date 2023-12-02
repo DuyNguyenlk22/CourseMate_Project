@@ -73,7 +73,7 @@ export default function SignUpPage() {
             rules={[
               {
                 required: true,
-                message: 'Please Insert your account!',
+                message: 'Please enter your account!',
                 whitespace: true,
               },
             ]}
@@ -85,7 +85,7 @@ export default function SignUpPage() {
             rules={[
               {
                 required: true,
-                message: 'Please Insert your password!',
+                message: 'Please enter your password!',
               },
             ]}
             hasFeedback
@@ -97,8 +97,12 @@ export default function SignUpPage() {
             rules={[
               {
                 required: true,
-                message: 'Please Insert your Phone Number!',
+                message: 'Please enter your Phone Number!',
                 whitespace: true,
+              },
+              {
+                pattern: /^\d{10}$/,
+                message: 'Please enter a valid phone number!',
               },
             ]}>
             <Input />
@@ -110,7 +114,7 @@ export default function SignUpPage() {
             rules={[
               {
                 required: true,
-                message: 'Please Insert your group code(ex: GP09)!',
+                message: 'Please enter your group code(ex: GP09)!',
                 whitespace: true,
               },
             ]}>
@@ -121,8 +125,12 @@ export default function SignUpPage() {
             rules={[
               {
                 required: true,
-                message: 'Please Insert your fullname!',
+                message: 'Please enter your fullname!',
                 whitespace: true,
+              },
+              {
+                pattern: /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+                message: 'Please enter a valid name!',
               },
             ]}>
             <Input />
@@ -132,11 +140,11 @@ export default function SignUpPage() {
             rules={[
               {
                 type: 'email',
-                message: 'Your answer is not a valid E-mail!',
+                message: 'Please enter a valid E-mail!',
               },
               {
                 required: true,
-                message: 'Please insert your E-mail!',
+                message: 'Please enter your E-mail!',
               },
             ]}
           >
