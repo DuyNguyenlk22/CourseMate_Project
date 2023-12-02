@@ -77,7 +77,7 @@ export default function PersonalCourseBooking({ userDetail }) {
       <div>{renderUserRegisteredCourseList()}</div>
       <div className='text-right'>
         <p className='lg:text-xl ml-auto mr-0 w-1/2 md:w-full text-sm lg:p-10 py-4'>
-          View Other Courses of Educator at{" "}
+          View Other Courses of CourseMate at{" "}
           <span
             className='cursor-pointer font-semibold underline text-purple-900'
             onClick={() => {
