@@ -5,7 +5,7 @@ import { userDetailLocalStorage } from '../../../Services/localServices';
 
 export default function PersonalInfo({ userDetail }) {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const [form] = Form.useForm();
   const formItemLayout = {
     labelCol: { xs: { span: 8, }, sm: { span: 6, }, },
@@ -43,10 +43,7 @@ export default function PersonalInfo({ userDetail }) {
     }
   };
 
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-    fetchData(values);
-  }
+  const onFinish = (values) => { fetchData(values); }
 
   return (
     <div className=' bg-purple-100 border shadow-lg rounded-lg my-10'>
@@ -85,13 +82,14 @@ export default function PersonalInfo({ userDetail }) {
         </div>
       </div>
       <div className="text-center lg:m-10 m-5">
-        <button className='btnGlobal' onClick={setIsModalOpen(true)}>
+        <button className='btnGlobal' onClick={() => setIsModalUpdateOpen(true)}>
           Update
         </button>
       </div>
       <Modal
         className='bg-white rounded-2xl text-center overflow-hidden pb-0 lg:max-w-4xl min-w-max lg:min-w-1/2'
-        open={isModalOpen} onOk={setIsModalOpen(false)} onCancel={setIsModalOpen(false)}>
+        open={isModalUpdateOpen} onOk={() => setIsModalUpdateOpen(false)} onCancel={() => setIsModalUpdateOpen(false)}
+      >
         <h1 className='lg:text-3xl text-xl font-bold pt-5'>User Infomation</h1>
         <Form
           theme={'dark'}
