@@ -37,7 +37,7 @@ export default function PersonalPage() {
           <p className='lg:pt-24 pt-10 font-extrabold text-3xl '>
             Hello, {userDetail.hoTen}
           </p>
-          <p className='pt-5'>Wellcome back to Educator!!!</p>
+          <p className='pt-5'>Wellcome back to CourseMate!!!</p>
         </div>
         <div className='lg:w-1/2 w-full h-72 text-center relative overflow-hidden '>
           <img
