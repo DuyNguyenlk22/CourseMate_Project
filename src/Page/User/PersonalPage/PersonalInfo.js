@@ -27,7 +27,6 @@ export default function PersonalInfo({ userDetail }) {
   };
   useEffect(() => {
     if (userDetail !== null) {
-      console.log("userDetail: ", userDetail);
       form.setFieldsValue({
         taiKhoan: userDetail.taiKhoan,
         matKhau: userDetail.matKhau,

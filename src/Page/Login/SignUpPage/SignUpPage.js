@@ -33,17 +33,14 @@ export default function SignUpPage() {
     },
   };
   const handleSubmit = (values) => {
-    console.log("Form values:", values);
     let fetchDataUserRegister = async () => {
       try {
-        let response = await dangKy(values);
-        console.log("response: ", response);
-        console.log("values: ", values);
+        await dangKy(values);
         message.success("Congratulations, you have assigned successfully, please sign in now");
-        // setTimeout(() => {
-        //   window.location.reload();
-        //   window.location.href = "/signIn"
-        // }, 1000);
+        setTimeout(() => {
+          window.location.reload();
+          window.location.href = "/signIn"
+        }, 1000);
       } catch (err) {
         message.error(err.response.data);
       }
@@ -94,7 +91,7 @@ export default function SignUpPage() {
           >
             <Input.Password />
           </Form.Item>
-          <Form.Item name="soDienThoai"
+          <Form.Item name="soDt"
             label="Phone Number"
             rules={[
               {

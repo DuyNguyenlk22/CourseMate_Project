@@ -31,7 +31,7 @@ export default function PersonalPage() {
         <div className="bg-white-900 text-purple-900 shadow-2xl text-center rounded-lg lg:flex lg:mt-20 mt-5">
             <div className="lg:w-1/2 w-full lg:pl-10 pb-5">
                 <p className="lg:pt-24 pt-10 font-extrabold text-3xl ">Hello, {userDetail.hoTen}</p>
-                <p className="pt-5">Wellcome back to Educator!!!</p>
+                <p className="pt-5">Wellcome back to CourseMate!!!</p>
             </div>
             <div className="lg:w-1/2 w-full h-72 text-center relative overflow-hidden ">
                 <img className="w-96 mx-auto relative bottom-16" src="./image/personal/banner.svg" alt="null" />
