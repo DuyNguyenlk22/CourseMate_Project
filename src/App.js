@@ -13,9 +13,9 @@ import AdminHomePage from "./Page/Admin/AdminHomePage";
 import { localServices } from "./Services/localServices";
 import CourseDetailPage from "./Page/User/CourseDetailPage/CourseDetailPage";
 import AddUser from "./Page/Admin/user/AddUser/AddUser";
-// import Loading from "./Components/Loading/Loading";
 import Contact from "./Page/User/Contact/Contact";
 import ComingSoon from "./Page/ComingSoon/ComingSoon";
+import AboutUsPage from "./Page/User/AboutUsPage/AboutUsPage";
 
 function App() {
   let info = localServices.get();
@@ -24,81 +24,29 @@ function App() {
     isAdmin = info.maLoaiNguoiDung === "GV";
   }
   const userRoutes = [
-    {
-      path: "/",
-      element: (
-        <Layout>
-          {" "}
-          <HomePage />
-        </Layout>
-      ),
-    },
+    { path: "/", element: <Layout>{" "}<HomePage /></Layout>, },
     { path: "/signIn", element: <SignInPage /> },
     { path: "/signUp", element: <SignUpPage /> },
-    {
-      path: "/personal",
-      element: (
-        <Layout>
-          <PersonalPage />
-        </Layout>
-      ),
-    },
-    {
-      path: "/searchCourse/:tenKhoaHoc",
-      element: (
-        <Layout>
-          <SearchCoursePage />
-        </Layout>
-      ),
-    },
-    {
-      path: "/listCourseByCategories/:maDanhMuc",
-      element: (
-        <Layout>
-          {" "}
-          <ListCourseByCategoriesPage />
-        </Layout>
-      ),
-    },
-    {
-      path: "/AllCoursePage",
-      element: (
-        <Layout>
-          <AllCoursePage />
-        </Layout>
-      ),
-    },
-    {
-      path: "/courseDetail/:courseId",
-      element: (
-        <Layout>
-          <CourseDetailPage />
-        </Layout>
-      ),
-    },
+    { path: "/personal", element: <Layout><PersonalPage /></Layout>, },
+    { path: "/searchCourse/:tenKhoaHoc", element: <Layout><SearchCoursePage /></Layout>, },
+    { path: "/listCourseByCategories/:maDanhMuc", element: <Layout>{" "}<ListCourseByCategoriesPage /></Layout>, },
+    { path: "/AllCoursePage", element: <Layout><AllCoursePage /></Layout>, },
+    { path: "/courseDetail/:courseId", element: <Layout><CourseDetailPage /></Layout>, },
+    { path: "/contact", element: <Layout><Contact /></Layout>, },
+    { path: "/aboutUs", element: <Layout><AboutUsPage /></Layout>, },
+    { path: "/comingSoon", element: <ComingSoon />, },
     { path: "/*", element: <NotFoundPage /> },
-    {
-      path: "/contact",
-      element: (
-        <Layout>
-          <Contact />
-        </Layout>
-      ),
-    },
-    {
-      path: "/comingSoon",
-      element: <ComingSoon />,
-    },
   ];
+
 
   const adminRoutes = [
     { path: "/", element: <AdminHomePage /> },
     { path: "/signIn", element: <SignInPage /> },
     { path: "/signUp", element: <SignUpPage /> },
     { path: "/personal", element: <PersonalPage /> },
-    { path: "/*", element: <NotFoundPage /> },
     { path: "/admin", element: <AdminHomePage /> },
     { path: "/addUser", element: <AddUser /> },
+    { path: "/*", element: <NotFoundPage /> },
   ];
 
   let selectedRoutes = userRoutes;
@@ -107,8 +55,6 @@ function App() {
   }
   return (
     <div>
-      {/* Khi nào mọi người muốn dùng spinner thì mở nó ra nhé  */}
-      {/* <Loading /> */}
       <BrowserRouter>
         <Routes>
           {selectedRoutes.map((route) => (

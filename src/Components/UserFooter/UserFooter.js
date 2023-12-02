@@ -57,7 +57,9 @@ export default function UserFooter() {
               {listItem.listItemCol2.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink to={"/comingSoon"}>{item.title}</NavLink>
+                    {item.title === 'About us' ?
+                      <NavLink to={"/aboutUs"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>{item.title}</NavLink>
+                      : <NavLink to={"/comingSoon"}>{item.title}</NavLink>}
                   </li>
                 );
               })}
@@ -69,7 +71,9 @@ export default function UserFooter() {
               {listItem.listItemCol3.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink to={"/*"}>{item.title}</NavLink>
+                    {item.title === 'Contact Us' ?
+                      <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>{item.title}</NavLink>
+                      : <NavLink to={"/comingSoon"}>{item.title}</NavLink>}
                   </li>
                 );
               })}
@@ -84,7 +88,7 @@ export default function UserFooter() {
             <p>Aut, quae convallis minim cum ornare! Pede dictum convallis.</p>
             <div>
               <button className='btnGlobal font-semibold'>
-                <NavLink to={"/contact"}>JOIN US NOW</NavLink>
+                <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>JOIN US NOW</NavLink>
               </button>
             </div>
           </div>

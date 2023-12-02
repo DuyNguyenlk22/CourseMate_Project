@@ -63,7 +63,7 @@ export default function AboutUs() {
             </div>
           </div>
           <div className='mt-10'>
-            <NavLink to={"/comingSoon"}>
+            <NavLink to={"/aboutUs"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
               <button className='btnGlobal font-bold'>MORE ABOUT US</button>
             </NavLink>
           </div>
@@ -86,6 +86,6 @@ export default function AboutUs() {
           />
         </div>
       </div>
-    </section>
+    </section >
   );
 }

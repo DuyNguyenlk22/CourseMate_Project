@@ -133,12 +133,12 @@ export default function UserHeaderDesktop() {
             <ul className='flex items-center space-x-8 lg:space-x-4 xl:space-x-8'>
               {renderNavItem()}
               <li>
-                <NavLink to={"/contact"}>CONTACT</NavLink>
+                <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>CONTACT</NavLink>
               </li>
             </ul>
           </nav>
           <div>
-            <NavLink to={"/contact"}>
+            <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
               <button className='btnGlobal'>JOIN US NOW</button>
             </NavLink>
           </div>
