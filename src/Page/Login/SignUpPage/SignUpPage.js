@@ -36,12 +36,14 @@ export default function SignUpPage() {
     console.log("Form values:", values);
     let fetchDataUserRegister = async () => {
       try {
-        await dangKy(values);
+        let response = await dangKy(values);
+        console.log("response: ", response);
+        console.log("values: ", values);
         message.success("Congratulations, you have assigned successfully, please sign in now");
-        setTimeout(() => {
-          window.location.reload();
-          window.location.href = "/signIn"
-        }, 1000);
+        // setTimeout(() => {
+        //   window.location.reload();
+        //   window.location.href = "/signIn"
+        // }, 1000);
       } catch (err) {
         message.error(err.response.data);
       }
