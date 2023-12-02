@@ -129,7 +129,7 @@ export default function SignUpPage() {
                 whitespace: true,
               },
               {
-                pattern: /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+                pattern: /^[\p{L}\s']+$/u,
                 message: 'Please enter a valid name!',
               },
             ]}>
