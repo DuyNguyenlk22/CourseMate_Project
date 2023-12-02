@@ -76,7 +76,7 @@ export default function PersonalCourseBooking({ userDetail }) {
       </div>
       <div>{renderUserRegisteredCourseList()}</div>
       <div className='text-right'>
-        <p className='lg:text-xl w-1/2 md:w-full text-sm lg:p-10 py-4'>
+        <p className='lg:text-xl ml-auto w-1/2 md:w-full text-sm lg:p-10 py-4'>
           View Other Courses of Educator at{" "}
           <span
             className='cursor-pointer font-semibold underline text-purple-900'
