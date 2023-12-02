@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function NotFoundPage() {
     let navigate = useNavigate();
+    
     return (
         <div id='notFoundPage' className='w-screen h-screen text-center bg-pink-100'>
             <img className='lg:w-1/3 mx-auto' src='./image/notfoundImg2.svg' alt='404' />

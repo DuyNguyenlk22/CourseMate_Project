@@ -11,10 +11,6 @@ export default function CourseDetailPage() {
   let [courseDetail, setCourseDetail] = useState();
   const { info } = useSelector((state) => state.userSlice);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   let fakeData = [
     {
       key: "1",
@@ -190,6 +186,7 @@ export default function CourseDetailPage() {
     }
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchDataCourseDetail = async () => {
       try {
         const response = await layThongTinKhoaHoc(maKhoaHoc);

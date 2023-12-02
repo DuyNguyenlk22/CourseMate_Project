@@ -32,10 +32,9 @@ export default function FormEdit({ setIsModalEditOpen, fetchDataCourseList }) {
     let file = e.target.files[0];
     setSelectedImg(file);
     if (
-      file
-      // (file.type === "image/jpeg" ||
-      //   file.type === "image/jpg" ||
-      //   file.type === "image/png")
+      (file.type === "image/jpeg" ||
+        file.type === "image/jpg" ||
+        file.type === "image/png")
     ) {
       const reader = new FileReader();
       reader.onload = (e) => {

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
+import { localServices } from "./Services/localServices";
 import Layout from "./Template/Layout";
 import HomePage from "./Page/User/HomePage/HomePage";
 import SignInPage from "./Page/Login/SignInPage/SignInPage";
@@ -10,7 +11,6 @@ import ListCourseByCategoriesPage from "./Page/User/ListCourseByCategoriesPage/L
 import AllCoursePage from "./Page/User/AllCoursePage/AllCoursePage";
 import NotFoundPage from "./Page/NotFoundPage/NotFoundPage";
 import AdminHomePage from "./Page/Admin/AdminHomePage";
-import { localServices } from "./Services/localServices";
 import CourseDetailPage from "./Page/User/CourseDetailPage/CourseDetailPage";
 import AddUser from "./Page/Admin/user/AddUser/AddUser";
 import Contact from "./Page/User/Contact/Contact";
@@ -20,9 +20,8 @@ import AboutUsPage from "./Page/User/AboutUsPage/AboutUsPage";
 function App() {
   let info = localServices.get();
   let isAdmin;
-  if (info !== null && info !== undefined) {
-    isAdmin = info.maLoaiNguoiDung === "GV";
-  }
+  if (info !== null && info !== undefined) { isAdmin = info.maLoaiNguoiDung === "GV"; }
+
   const userRoutes = [
     { path: "/", element: <Layout>{" "}<HomePage /></Layout>, },
     { path: "/signIn", element: <SignInPage /> },
@@ -38,7 +37,6 @@ function App() {
     { path: "/*", element: <NotFoundPage /> },
   ];
 
-
   const adminRoutes = [
     { path: "/", element: <AdminHomePage /> },
     { path: "/signIn", element: <SignInPage /> },
@@ -50,9 +48,8 @@ function App() {
   ];
 
   let selectedRoutes = userRoutes;
-  if (isAdmin) {
-    selectedRoutes = adminRoutes;
-  }
+  if (isAdmin) { selectedRoutes = adminRoutes; }
+
   return (
     <div>
       <BrowserRouter>

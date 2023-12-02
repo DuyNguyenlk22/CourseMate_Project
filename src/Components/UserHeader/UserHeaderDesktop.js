@@ -10,6 +10,7 @@ export default function UserHeaderDesktop() {
   const [headerFixed, setheaderFixed] = useState(" ");
   let { info } = useSelector((state) => state.userSlice);
   let navigate = useNavigate();
+
   const onSearch = (value, _e) => {
     navigate(`/searchCourse/${value}`);
   };
@@ -23,9 +24,7 @@ export default function UserHeaderDesktop() {
       setheaderFixed(" ");
     }
   };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScrollHeader);
-  }, []);
+
   let renderNavItem = () => {
     return dataHeader.items.map((item, index) => {
       return (
@@ -34,9 +33,7 @@ export default function UserHeaderDesktop() {
             onClick={() => {
               navigate(`/`);
               const element = document.getElementById(item.itemID);
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              if (element) { element.scrollIntoView({ behavior: "smooth" }); }
             }}
             href={`#${item.itemID}`}>
             {item.navItem}
@@ -52,11 +49,7 @@ export default function UserHeaderDesktop() {
         <div className='flex items-center'>
           <NavLink to={"/personal"}>
             <span className='hover:text-[#f24080] font-bold duration-300 flex items-center'>
-              <img
-                src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
-                className='w-8 mr-2 rounded-full'
-                alt='...'
-              />
+              <img src={`https://i.pravatar.cc/150?u=${info.hoTen}`} className='w-8 mr-2 rounded-full' alt='...' />
               {info.hoTen}
             </span>
           </NavLink>
@@ -73,21 +66,20 @@ export default function UserHeaderDesktop() {
       return (
         <>
           <button className='mr-4 font-bold'>
-            <NavLink to={"/signIn"}>
-              <i className='fa-solid fa-user mr-2'></i>
-              <span>Sign In</span>
-            </NavLink>
+            <NavLink to={"/signIn"}><i className='fa-solid fa-user mr-2'></i><span>Sign In</span></NavLink>
           </button>
           <button className='font-bold'>
-            <NavLink to={"/signUp"}>
-              <i className='fa-solid fa-unlock mr-2'></i>
-              <span>Sign Up</span>
-            </NavLink>
+            <NavLink to={"/signUp"}><i className='fa-solid fa-unlock mr-2'></i><span>Sign Up</span></NavLink>
           </button>
         </>
       );
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollHeader);
+  }, []);
+
   return (
     <div className='header'>
       <div className='header__top'>

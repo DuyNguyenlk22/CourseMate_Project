@@ -1,10 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  layDanhSachNguoiDung,
-  capNhatThongTinNguoiDung,
-  timKiemNguoiDung,
-  xoaNguoiDung,
-} from "../../Services/api";
+import { layDanhSachNguoiDung, capNhatThongTinNguoiDung, timKiemNguoiDung, xoaNguoiDung, } from "../../Services/api";
 import { message } from "antd";
 
 const initialState = {

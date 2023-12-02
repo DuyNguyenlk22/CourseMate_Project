@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ghiDanhKhoaHoc, huyGhiDanh, layDanhSachKhoaHocChoXetDuyet, layDanhSachKhoaHocChuaGhiDanh, layDanhSachKhoaHocDaXetDuyet, } from "../../../../Services/api";
 import { setListKhoaHocChoXetDuyet, setListKhoaHocChuaGhiDanh, setListKhoaHocDaXacThuc, } from "../../../../Redux/formEnrollSlice/formEnrollSlice";
 
-export default function FormEnrollment({ user }) {
+export default function EnrollmentUser({ user }) {
   const columnsKhoaHocChoXacThuc = [
     { title: "#", dataIndex: "stt", key: "stt", },
     { title: "Course name", dataIndex: "tenKhoaHoc", key: "tenKhoaHoc", },
@@ -54,6 +54,7 @@ export default function FormEnrollment({ user }) {
       },
     },
   ];
+
   const {
     listKhoaHocChuaGhiDanh,
     listKhoaHocChoXetDuyet,
@@ -119,7 +120,6 @@ export default function FormEnrollment({ user }) {
   }
 
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
     setMaKhoaHoc(value);
   };
   let renderListKhoaHocChuaGhiDanh = () => {
@@ -139,9 +139,7 @@ export default function FormEnrollment({ user }) {
         });
         message.success("Enrollment successful");
         setMaKhoaHoc(null);
-        let res = await layDanhSachKhoaHocDaXetDuyet({
-          taiKhoan: taiKhoan,
-        });
+        let res = await layDanhSachKhoaHocDaXetDuyet({ taiKhoan: taiKhoan, });
         dispatch(setListKhoaHocDaXacThuc(res.data));
       } catch (err) {
         message.error(err.response.data);

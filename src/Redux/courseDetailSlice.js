@@ -1,4 +1,3 @@
-// src/Redux/courseDetailSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { layThongTinKhoaHoc } from "../Services/api";
 
@@ -8,7 +7,6 @@ const initialState = {
   error: null,
 };
 
-// Async thunk action
 export const fetchCourseDetail = createAsyncThunk(
   "courseDetail/fetchCourseDetail",
   async (maKhoaHoc, thunkAPI) => {
@@ -42,5 +40,5 @@ const courseDetailSlice = createSlice({
   },
 });
 
-export const {} = courseDetailSlice.actions;
+export const { } = courseDetailSlice.actions;
 export default courseDetailSlice.reducer;
