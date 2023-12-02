@@ -16,9 +16,7 @@ export default function Categories() {
         dispatch(setListCategories(res.data));
         categoriesLocalStorage.set(res.data);
         setCategories(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getListCategories();
   }, [dispatch]);
@@ -61,8 +59,7 @@ export default function Categories() {
       return (
         <NavLink
           key={`item_${index}`}
-          to={`/listCourseByCategories/${item.maDanhMuc}`}
-        >
+          to={`/listCourseByCategories/${item.maDanhMuc}`}>
           <div className='categories__item flex items-center justify-start'>
             <img
               width='64'

@@ -15,9 +15,7 @@ export default function ListCourseByCategoriesPage() {
       try {
         let res = await layKhoaHocTheoDanhMuc(maDanhMuc);
         setListItem(res.data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     getListCourseByCategories();
   }, [maDanhMuc]);
@@ -103,7 +101,7 @@ export default function ListCourseByCategoriesPage() {
       );
     });
   };
-  
+
   return (
     <div className='listCourseByCateGories py-20 bg-[#f8f8f8]'>
       <div className='container'>

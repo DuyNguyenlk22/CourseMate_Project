@@ -18,7 +18,6 @@ export default function PersonalCourseBooking({ userDetail }) {
       }, 1000);
     } catch (error) {
       message.error(error.response.data.content);
-      console.log(error);
     }
   };
   const handleCancleUserCourse = (maKhoaHoc) => {
@@ -33,8 +32,7 @@ export default function PersonalCourseBooking({ userDetail }) {
       return (
         <div
           key={index}
-          className='grid md:grid-cols-4 grid-cols-1 bg-purple-100 my-5 rounded-2xl overflow-hidden'
-        >
+          className='grid md:grid-cols-4 grid-cols-1 bg-purple-100 my-5 rounded-2xl overflow-hidden'>
           <div className='md:p-4 pb-5'>
             <img
               className='rounded-lg'
@@ -58,8 +56,7 @@ export default function PersonalCourseBooking({ userDetail }) {
               className='btnGlobalOutline max-h-10 md:max-h-20'
               onClick={() => {
                 handleCancleUserCourse(course.maKhoaHoc);
-              }}
-            >
+              }}>
               Cancel Enrollment
             </button>
           </div>
@@ -82,8 +79,7 @@ export default function PersonalCourseBooking({ userDetail }) {
             className='cursor-pointer font-semibold underline text-purple-900'
             onClick={() => {
               navigate("/");
-            }}
-          >
+            }}>
             HERE
           </span>
         </p>

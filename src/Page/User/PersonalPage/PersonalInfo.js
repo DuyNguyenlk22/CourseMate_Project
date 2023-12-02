@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Input, Modal, message } from 'antd';
-import { capNhatThongTinNguoiDung } from '../../../Services/api';
-import { userDetailLocalStorage } from '../../../Services/localServices';
+import React, { useEffect, useState } from "react";
+import { Form, Input, Modal, message } from "antd";
+import { capNhatThongTinNguoiDung } from "../../../Services/api";
+import { userDetailLocalStorage } from "../../../Services/localServices";
 
 export default function PersonalInfo({ userDetail }) {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const [form] = Form.useForm();
   const formItemLayout = {
-    labelCol: { xs: { span: 8, }, sm: { span: 6, }, },
-    wrapperCol: { xs: { span: 48, }, sm: { span: 24, }, },
+    labelCol: { xs: { span: 8 }, sm: { span: 6 } },
+    wrapperCol: { xs: { span: 48 }, sm: { span: 24 } },
   };
   useEffect(() => {
     if (userDetail !== null) {
@@ -39,19 +38,19 @@ export default function PersonalInfo({ userDetail }) {
       }, 1000);
     } catch (error) {
       message.error(error.response.data.content);
-      console.log(error);
     }
   };
 
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
     fetchData(values);
-  }
+  };
 
   return (
     <div className=' bg-purple-100 border shadow-lg rounded-lg my-10'>
-      <div className="text-center py-5">
-        <span className='px-5 py-2 text-3xl my-5 mx-auto font-semibold text-center'>Your Profile</span>
+      <div className='text-center py-5'>
+        <span className='px-5 py-2 text-3xl my-5 mx-auto font-semibold text-center'>
+          Your Profile
+        </span>
         <img
           src={`https://i.pravatar.cc/150?u=${userDetail.hoTen}`}
           className='rounded-full m-auto mt-5'
@@ -66,7 +65,7 @@ export default function PersonalInfo({ userDetail }) {
               </tr>
               <tr>
                 <th className='p-1 pr-4'>Password</th>
-                <td>{userDetail.matKhau.toString().replace(/./g, '*')}</td>
+                <td>{userDetail.matKhau.toString().replace(/./g, "*")}</td>
               </tr>
               <tr>
                 <th className='p-1 pr-4'>Phone Number</th>
@@ -84,126 +83,132 @@ export default function PersonalInfo({ userDetail }) {
           </table>
         </div>
       </div>
-      <div className="text-center lg:m-10 m-5">
-        <button className='btnGlobal' onClick={setIsModalOpen(true)}>
+      <div className='text-center lg:m-10 m-5'>
+        <button
+          className='btnGlobal'
+          onClick={() => setIsModalUpdateOpen(true)}>
           Update
         </button>
       </div>
       <Modal
         className='bg-white rounded-2xl text-center overflow-hidden pb-0 lg:max-w-4xl min-w-max lg:min-w-1/2'
-        open={isModalOpen} onOk={setIsModalOpen(false)} onCancel={setIsModalOpen(false)}>
+        open={isModalUpdateOpen}
+        onOk={() => setIsModalUpdateOpen(false)}
+        onCancel={() => setIsModalUpdateOpen(false)}>
         <h1 className='lg:text-3xl text-xl font-bold pt-5'>User Infomation</h1>
         <Form
-          theme={'dark'}
+          theme={"dark"}
           {...formItemLayout}
           form={form}
-          name="register"
+          name='register'
           className='lg:p-10 p-4 m-auto'
           onFinish={onFinish}
           style={{
             maxWidth: 800,
           }}
-          scrollToFirstError
-        >
-          <Form.Item name="taiKhoan"
-            label="Account Name"
+          scrollToFirstError>
+          <Form.Item
+            name='taiKhoan'
+            label='Account Name'
             rules={[
               {
                 required: true,
-                message: 'Please enter your account',
+                message: "Please enter your account",
                 whitespace: true,
               },
-            ]}
-          >
+            ]}>
             <Input disabled={true} placeholder={userDetail.taiKhoan} />
           </Form.Item>
-          <Form.Item name="matKhau"
-            label="Password"
+          <Form.Item
+            name='matKhau'
+            label='Password'
             rules={[
               {
                 required: true,
-                message: 'Please enter your password!',
+                message: "Please enter your password!",
               },
             ]}
-            hasFeedback
-          >
+            hasFeedback>
             <Input.Password />
           </Form.Item>
-          <Form.Item name="soDT"
-            label="Phone Number"
+          <Form.Item
+            name='soDT'
+            label='Phone Number'
             rules={[
               {
                 pattern: /^\d{10}$/,
-                message: 'Please enter a valid phone number!',
+                message: "Please enter a valid phone number!",
               },
               {
                 required: true,
-                message: 'Please enter Your Phone Number!',
+                message: "Please enter Your Phone Number!",
                 whitespace: true,
               },
             ]}>
             <Input />
           </Form.Item>
-          <Form.Item name="maNhom"
-            label="Group Code"
+          <Form.Item
+            name='maNhom'
+            label='Group Code'
             className='hidden'
             rules={[
               {
                 required: true,
-                message: 'Please enter Group Code!',
+                message: "Please enter Group Code!",
                 whitespace: true,
               },
             ]}>
             <Input disabled={true} placeholder={userDetail.maNhom} />
           </Form.Item>
-          <Form.Item name="maLoaiNguoiDung"
-            label="User Type"
+          <Form.Item
+            name='maLoaiNguoiDung'
+            label='User Type'
             className='hidden'
             rules={[
               {
                 required: true,
-                message: 'Please enter User Type!',
+                message: "Please enter User Type!",
                 whitespace: true,
               },
             ]}>
             <Input disabled={true} placeholder={userDetail.maLoaiNguoiDung} />
           </Form.Item>
-          <Form.Item name="hoTen"
-            label="Fullname"
+          <Form.Item
+            name='hoTen'
+            label='Fullname'
             rules={[
               {
                 required: true,
-                message: 'Please enter Your Fullname!',
+                message: "Please enter Your Fullname!",
                 whitespace: true,
               },
               {
                 pattern: /^[\p{L}\s']+$/u,
-                message: 'Please enter a valid name!',
+                message: "Please enter a valid name!",
               },
             ]}>
             <Input />
           </Form.Item>
-          <Form.Item name="email"
-            label="Email"
+          <Form.Item
+            name='email'
+            label='Email'
             rules={[
               {
-                type: 'email',
-                message: 'Please enter a valid E-mail!',
+                type: "email",
+                message: "Please enter a valid E-mail!",
               },
               {
                 required: true,
-                message: 'Please enter your E-mail!',
+                message: "Please enter your E-mail!",
               },
-            ]}
-          >
+            ]}>
             <Input />
           </Form.Item>
-          <button className='btnGlobal w-40 mt-5' htmlType="submit">
+          <button className='btnGlobal w-40 mt-5' htmlType='submit'>
             Update
           </button>
         </Form>
       </Modal>
     </div>
-
   );
-};
+}

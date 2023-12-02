@@ -1,6 +1,9 @@
 import { Checkbox, ConfigProvider, Pagination, Rate } from "antd";
 import React, { useEffect, useState } from "react";
-import { layDanhSachKhoaHoc, layDanhSachKhoaHoc_PhanTrang, } from "../../../Services/api";
+import {
+  layDanhSachKhoaHoc,
+  layDanhSachKhoaHoc_PhanTrang,
+} from "../../../Services/api";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./AllCoursePage.scss";
@@ -18,9 +21,7 @@ export default function AllCoursePage() {
       try {
         let res = await layDanhSachKhoaHoc_PhanTrang(page);
         setListItemPage(res.data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     getCourseListByPage();
   }, [page]);
@@ -30,9 +31,7 @@ export default function AllCoursePage() {
       try {
         let res = await layDanhSachKhoaHoc();
         setAllCourse(res.data);
-      } catch (err) {
-        console.log("😐 ~ getAllCourse ~ err:", err);
-      }
+      } catch (err) {}
     };
     getAllCourse();
   }, []);
@@ -51,8 +50,7 @@ export default function AllCoursePage() {
           <div
             id='cardItem'
             key={`item${index}`}
-            className='h-full hover:shadow-xl hover:-translate-y-1 rounded-3xl duration-300 border border-[#ffffff]'
-          >
+            className='h-full hover:shadow-xl hover:-translate-y-1 rounded-3xl duration-300 border border-[#ffffff]'>
             <NavLink to={`/courseDetail/${item.maKhoaHoc}`}>
               <div className='flex flex-col justify-between rounded-3xl overflow-hidden shadow-lg h-full'>
                 <div>
@@ -67,8 +65,7 @@ export default function AllCoursePage() {
                         (index + 1) % 2 !== 0
                           ? "nameCourse nameCourse_bg1"
                           : "nameCourse nameCourse_bg2"
-                      }
-                    >
+                      }>
                       {item.danhMucKhoaHoc?.maDanhMucKhoahoc}
                     </div>
                   </div>
@@ -106,8 +103,7 @@ export default function AllCoursePage() {
                     <div>
                       <i
                         className='fa-regular fa-eye mr-3'
-                        style={{ color: "#F24080" }}
-                      ></i>
+                        style={{ color: "#F24080" }}></i>
                       <span>{item.luotXem}+ students</span>
                     </div>
                     <div className='hover:text-[#961040] hover:font-semibold duration-300'>
@@ -125,7 +121,9 @@ export default function AllCoursePage() {
       });
     }
   };
-  const onChange = (e) => { setSelectedItems(e); };
+  const onChange = (e) => {
+    setSelectedItems(e);
+  };
 
   return (
     <section className='allCoursePage py-10 bg-[#f8f8f8]'>
@@ -142,8 +140,7 @@ export default function AllCoursePage() {
                       colorBorder: "#000",
                       fontSize: "1.25rem",
                     },
-                  }}
-                >
+                  }}>
                   <Checkbox.Group
                     className='flex-col space-y-4'
                     options={
@@ -166,9 +163,9 @@ export default function AllCoursePage() {
               {renderItemPage()}
             </div>
             <div
-              className={`flex justify-center mt-8 ${selectedItems?.length !== 0 ? "hidden" : "block"
-                }`}
-            >
+              className={`flex justify-center mt-8 ${
+                selectedItems?.length !== 0 ? "hidden" : "block"
+              }`}>
               <Pagination
                 current={page}
                 onChange={(page) => {

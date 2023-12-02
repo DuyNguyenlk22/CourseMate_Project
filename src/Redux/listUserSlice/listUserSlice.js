@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { layDanhSachNguoiDung, capNhatThongTinNguoiDung, timKiemNguoiDung, xoaNguoiDung, } from "../../Services/api";
+import {
+  layDanhSachNguoiDung,
+  capNhatThongTinNguoiDung,
+  timKiemNguoiDung,
+  xoaNguoiDung,
+} from "../../Services/api";
 import { message } from "antd";
 
 const initialState = {
@@ -16,9 +21,7 @@ export const fetchList = createAsyncThunk(
         dispatch(setListUser(res.data));
       }
       return res.data;
-    } catch (error) {
-      console.log(error.message);
-    }
+    } catch (error) {}
   },
 );
 export const updateUser = createAsyncThunk(

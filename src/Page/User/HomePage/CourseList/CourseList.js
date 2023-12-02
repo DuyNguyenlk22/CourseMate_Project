@@ -17,9 +17,7 @@ export default function CourseList() {
       try {
         let res = await layDanhSachKhoaHoc();
         setCourseList(res.data);
-      } catch (err) {
-        console.log("error", err);
-      }
+      } catch (err) {}
     };
     getCourseList();
   }, []);
