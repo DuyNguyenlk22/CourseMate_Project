@@ -6,7 +6,6 @@ import PersonalCourseBooking from "./PersonalCourseBooking";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 export default function PersonalPage() {
-    let info = localServices.get();
     const [userDetail, setUserDetail] = useState([]);
     let navigate = useNavigate();
 
