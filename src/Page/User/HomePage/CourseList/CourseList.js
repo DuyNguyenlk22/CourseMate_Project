@@ -22,7 +22,7 @@ export default function CourseList() {
     getCourseList();
   }, []);
   let renderCourseItem = () => {
-    return courseList?.slice(6, 14).map((item, index) => {
+    return courseList?.slice(19, 31).map((item, index) => {
       return (
         <SwiperSlide key={`couseItem${index}`}>
           <div className='p-5'>
