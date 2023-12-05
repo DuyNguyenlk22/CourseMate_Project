@@ -28,12 +28,14 @@ export default function UserHeaderDesktop() {
   let renderNavItem = () => {
     return dataHeader.items.map((item, index) => {
       return (
-        <li key={`item${index}`} className="hover:text-[#f24080]">
+        <li key={`item${index}`} className='hover:text-[#f24080]'>
           <a
             onClick={() => {
               navigate(`/`);
               const element = document.getElementById(item.itemID);
-              if (element) { element.scrollIntoView({ behavior: "smooth" }); }
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
             }}
             href={`#${item.itemID}`}>
             {item.navItem}
@@ -49,7 +51,11 @@ export default function UserHeaderDesktop() {
         <div className='flex items-center'>
           <NavLink to={"/personal"}>
             <span className='hover:text-[#f24080] font-bold duration-300 flex items-center'>
-              <img src={`https://i.pravatar.cc/150?u=${info.hoTen}`} className='w-8 mr-2 rounded-full' alt='...' />
+              <img
+                src={`https://i.pravatar.cc/150?u=${info.hoTen}`}
+                className='w-8 mr-2 rounded-full'
+                alt='...'
+              />
               {info.hoTen}
             </span>
           </NavLink>
@@ -66,10 +72,16 @@ export default function UserHeaderDesktop() {
       return (
         <>
           <button className='mr-4 font-bold'>
-            <NavLink to={"/signIn"}><i className='fa-solid fa-user mr-2'></i><span>Sign In</span></NavLink>
+            <NavLink to={"/signIn"}>
+              <i className='fa-solid fa-user mr-2'></i>
+              <span>Sign In</span>
+            </NavLink>
           </button>
           <button className='font-bold'>
-            <NavLink to={"/signUp"}><i className='fa-solid fa-unlock mr-2'></i><span>Sign Up</span></NavLink>
+            <NavLink to={"/signUp"}>
+              <i className='fa-solid fa-unlock mr-2'></i>
+              <span>Sign Up</span>
+            </NavLink>
           </button>
         </>
       );
@@ -87,7 +99,7 @@ export default function UserHeaderDesktop() {
           <div className='iconHeader__left space-x-6'>
             {dataHeader.icons.map((item, index) => {
               return (
-                <a href={`https://${item.link}`} target='blank'>
+                <a key={index} href={`https://${item.link}`} target='blank'>
                   <i key={`icon-${index}`} className={item.nameIcon} />
                 </a>
               );
@@ -125,12 +137,18 @@ export default function UserHeaderDesktop() {
             <ul className='flex items-center space-x-8 lg:space-x-4 xl:space-x-8'>
               {renderNavItem()}
               <li>
-                <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>CONTACT</NavLink>
+                <NavLink
+                  to={"/contact"}
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}>
+                  CONTACT
+                </NavLink>
               </li>
             </ul>
           </nav>
           <div>
-            <NavLink to={"/contact"} onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
+            <NavLink
+              to={"/contact"}
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}>
               <button className='btnGlobal'>JOIN US NOW</button>
             </NavLink>
           </div>
