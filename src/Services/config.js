@@ -1,10 +1,5 @@
 import axios from "axios";
-import { store } from "../Redux/store";
 import { localServices } from "./localServices";
-import {
-  handleLoadingOff,
-  handleLoadingOn,
-} from "../Redux/spinnerSlice/spinnerSlice";
 
 export const BASE_URL = "https://elearningnew.cybersoft.edu.vn";
 export const TOKEN_CYBER =
@@ -23,13 +18,3 @@ export const https = axios.create({
     Authorization: "Bearer " + localServices.get()?.accessToken,
   },
 });
-
-https.interceptors.request.use(
-  function (config) {
-    store.dispatch(handleLoadingOn());
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error);
-  },
-);
